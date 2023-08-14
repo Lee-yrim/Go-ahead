@@ -20,8 +20,9 @@
 <p>나는 lim 13:12</p>
 <p>나는 lim2 13:19</p>
 <p>나는 hye 14:52</p>
+<p>나는 seo 15:02</p>
 <p>나는 psj 15:14</p>
->>>>>>> branch 'develop' of https://github.com/Lee-yrim/Go-ahead.git
+
 
 <P>  The time on the server is ${serverTime}. </P>
 </body>
