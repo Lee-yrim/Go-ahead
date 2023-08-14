@@ -16,7 +16,8 @@
 <p>나는 디벨롭 13:05</p>
 <p>나는 lim 13:12</p>
 <p>나는 lim2 13:19</p>
-<p>나는 seo 14:57</p>
+<p>나는 hye 14:52</p>
+<p>나는 seo 15:02</p>
 
 <P>  The time on the server is ${serverTime}. </P>
 </body>
