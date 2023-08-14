@@ -14,10 +14,15 @@
 <p>헤이헤이</p>
 <p>슬지 sj 12:46</p>
 <p>나는 디벨롭 13:05</p>
+<<<<<<< HEAD
+<p>나는 슬지 13:07</p>
+=======
 <p>나는 lim 13:12</p>
 <p>나는 lim2 13:19</p>
 <p>나는 hye 14:52</p>
 <p>나는 seo 15:02</p>
+<p>나는 psj 15:14</p>
+
 
 <P>  The time on the server is ${serverTime}. </P>
 </body>
