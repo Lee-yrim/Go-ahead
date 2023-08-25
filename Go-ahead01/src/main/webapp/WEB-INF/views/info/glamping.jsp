@@ -19,24 +19,6 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=88c7bc6d3721b31759169b4c8277a4f9&libraries=services"></script>
 </head>
 
-<script>
-	$(document).ready(function(){	
-		$('.btnSave').click(function() {
-			  var formData =$(this).parent().serialize();
-			  
-			$.ajax({
-				type:'GET',
-				url: 'memb/heart.do',
-				data:formData,
-				success:function(){
-					alert("ok");
-				}
-			});
-			
-		});
-	});
-</script>
-
 <style>
 #map{
 width:100%;
@@ -103,14 +85,14 @@ color:olive;
 							</c:otherwise> 		
 						</c:choose>
 			            <div style="position: absolute; top: -20px; right: 0px">
-			                <div class="heart"></div>
+			                <form action="heart.do" method='get'>
+					<input type="hidden" name="info_seq" value="${dto.info_seq}"/>
+						<div class="heart"></div>
+		        	</form>
 			            </div>
 			            <div class="card-body">
 			            
-			            <form action="heart.do" method='get'>
-					<input type="hidden" name="info_seq" value="${dto.info_seq}"/>
-					<input type="button" class="btnSave" value="하트" />
-					</form>
+			          
 			            
 			               <h5 class="card-title">${dto.loc_name}</h5>
 			              <p class="card-text" style="height:100px;padding:16px 0px;">
@@ -132,10 +114,22 @@ color:olive;
 	</div> -->
 </div> 
 
-    <script>
+  <script>
       $(function () {
         $(".heart").on("click", function () {
           $(this).toggleClass("is-active");
+          var formData =$(this).parent().serialize();
+		  
+			$.ajax({
+				type:'GET',
+				url: 'memb/heart.do',
+				data:formData,
+				success:function(){
+					alert("ok");
+				}
+			});
+          
+          
         });
       });
     </script>

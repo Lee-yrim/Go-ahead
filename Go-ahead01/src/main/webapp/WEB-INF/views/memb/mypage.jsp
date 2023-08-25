@@ -33,14 +33,21 @@
 </script>
 
 <style>
+/* 폼이 footer와 겹쳐서 아래 formArea(원본)에 주석처리*/
 .formArea {
+	width: 80%;
+	margin: 0 auto;
+}
+
+
+/* .formArea {
 	width: 80%;
 	margin: 0 auto;
 	position: absolute;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
-}
+} */
 
 .title-txt {
 	margin: 60px 0;
