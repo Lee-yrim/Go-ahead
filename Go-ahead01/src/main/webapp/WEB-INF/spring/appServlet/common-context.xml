@@ -10,15 +10,14 @@
 	<!-- 아래 영향을 받는 것에서 제외 / 영향을 받지 않게 함 ( 비회원이 이용할 수 있는 기능 - login, sign up) -->
 
 
-	<mvc:interceptors>
+<!-- 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/*/*.do" />
 			<mvc:exclude-mapping path="/memb/login.do" />
 			<mvc:exclude-mapping path="/memb/signup.do" />
-
 			<bean class="common.interceptor.AuthCheckInterceptor" />
 		</mvc:interceptor>
-	</mvc:interceptors>
+	</mvc:interceptors> -->
 
 	<!-- [1] Datasource 빈 선언 -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -36,6 +35,7 @@
 				<value>classpath:mapper/membMapper.xml</value>
 				<value>classpath:mapper/infoMapper.xml</value>
 				<value>classpath:mapper/favorMapper.xml</value>
+				<value>classpath:mapper/detailMapper.xml</value>
 			</list>
 		</property>
 

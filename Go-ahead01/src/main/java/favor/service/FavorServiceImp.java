@@ -19,6 +19,7 @@ public class FavorServiceImp implements FavorService {
 	// 찜한 목록을 favor.do에 출력
 	@Override
 	public List<FavorDTO> favorList(FavorDTO dto) {
+	
 		return favorDao.favor_list(dto);
 	}
 

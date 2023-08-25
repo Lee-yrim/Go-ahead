@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="memb">
+
+	<insert id="insertMemb" parameterType="memb.dto.MembDTO">
+		INSERT INTO
+		memb
+		VALUES(#{memb_id, jdbcType=VARCHAR}, #{memb_pw, jdbcType=VARCHAR}, #{birth, jdbcType=DATE}, #{nickname, jdbcType=VARCHAR})
+	</insert>
+
+	<!-- id를 이용해서 해당 회원의 정보 불러옴 -->
+	<select id="selectById" resultType="memb.dto.MembDTO" parameterType="String">
+		SELECT * FROM memb
+		WHERE memb_id = #{memb_id}
+	</select>
+
+	<!-- 회원정보 수정 쿼리 -->
+	<update id="updateMemb" parameterType="memb.dto.MembDTO">
+		update memb set
+		nickname=#{nickname}
+		<if test="memb_pw!=''">
+		  ,memb_pw=#{memb_pw}
+		</if>
+				
+		where memb_id=#{memb_id}
+	</update>
+	
+	
+</mapper>

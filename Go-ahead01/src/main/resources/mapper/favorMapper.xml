@@ -39,10 +39,10 @@
 	<!-- 찜 추가 -->
 	<insert id="insertFavor" parameterType="favor.dto.FavorDTO">
 		INSERT INTO
-		favor(favor_seq, info_seq, memb_id)
+		favor(favor_seq, info_seq, memb_id, favor_why)
 		select
 		favor_seq_test.nextval,
-		#{info_seq}, #{memb_id} from dual
+		#{info_seq}, #{memb_id}, #{favor_why} from dual
 		WHERE (SELECT
 		count(*) from favor
 		where

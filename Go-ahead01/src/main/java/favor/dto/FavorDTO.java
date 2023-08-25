@@ -8,12 +8,21 @@ public class FavorDTO {
 	private int favor_seq;
 	private int info_seq;
 	private String memb_id;
+	private String favor_why;
 	
 	private InfoDTO infoDTO;
 	private MembDTO membDTO;
 
 	public FavorDTO() {
 
+	}
+	
+	public String getFavor_why() {
+		return favor_why;
+	}
+	
+	public void setFavor_why(String favor_why) {
+		this.favor_why = favor_why;
 	}
 
 	public InfoDTO getInfoDTO() {

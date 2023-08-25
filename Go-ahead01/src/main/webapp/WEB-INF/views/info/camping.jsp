@@ -89,6 +89,9 @@ color:olive;
  <div class="container" style="margin-top:100px">
  <div class="row">         
 		<c:forEach items="${camping}" var="dto">
+			<c:url var = "path" value = "detail.do">
+				<c:param name="info_seq" value = "${dto.info_seq }" />			
+			</c:url>
 			<c:set var="variety" value="${dto.variety}" />
 			<c:if test ="${fn:contains(variety, '일반')}">
 				<div class="col-3"  style="margin-bottom:10px;">
@@ -115,7 +118,7 @@ color:olive;
 					
 						<h5 class="card-title">${dto.loc_name}</h5>
 						<p class="card-text" style="height:100px;padding:16px 0px;">${dto.address}</p>
-						<a href="#" class="btn" style="background-color:olive;color:white;border-radius:10px;position:absolute;bottom:10px;">더 보기</a>
+						<a href="${path }" class="btn" style="background-color:olive;color:white;border-radius:10px;position:absolute;bottom:10px;">더 보기</a>
 					</div>
 					</div>
 				</div>   
