@@ -9,14 +9,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <style>
-    .formArea {
+/* 폼이 footer와 겹쳐서 아래 formArea(원본)에 주석처리*/
+.formArea {
+        width: 40%;
+        margin: 0 auto;
+    }
+
+/*     .formArea {
         width: 20%;
         margin: 0 auto;
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-    }
+    } */
     .title-txt {
         margin: 60px 0;
     }

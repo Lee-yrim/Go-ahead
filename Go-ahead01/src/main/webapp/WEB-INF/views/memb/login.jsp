@@ -36,13 +36,17 @@
 </script>
 </head>
 <style>
+/* 폼이 footer와 겹쳐서 formArea에서 주석처리 */
+
 .formArea {
-	/* 	width: 40%; */
+	/* width: 40%; */
+	width: 40%;
 	margin: 0 auto;
-	position: absolute;
+	
+	/* position: absolute;
 	left: 50%;
 	top: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%); */
 }
 
 .title-txt {
