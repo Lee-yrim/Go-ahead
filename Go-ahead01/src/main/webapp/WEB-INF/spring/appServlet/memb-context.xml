@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- MembersDaoImp 빈 선언 -->
+	<bean id="membDao" class="memb.dao.MembDaoImp">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
+
+	<!-- MembersServiceImp 빈 선언 -->
+	<bean id="membService" class="memb.service.MembServiceImp">
+		<property name="membDao" ref="membDao" />
+	</bean>
+
+	<!-- MembersController 빈 선언 -->
+	<bean class="memb.controller.MembController">
+		<property name="membService" ref="membService" />
+	</bean>
+</beans>
