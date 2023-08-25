@@ -24,6 +24,7 @@ public class FavorDaoImp implements FavorDAO {
 	// 찜 추가
 	@Override
 	public void insertFavor(FavorDTO dto) {
+		System.out.printf("%d %s", dto.getInfo_seq(), dto.getFavor_why());
 		sqlSession.insert("favor.insertFavor", dto);
 	}
 

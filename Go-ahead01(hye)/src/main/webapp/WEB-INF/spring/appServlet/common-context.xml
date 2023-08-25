@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+
+	<!-- 아래 영향을 받는 것에서 제외 / 영향을 받지 않게 함 ( 비회원이 이용할 수 있는 기능 - login, sign up) -->
+
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/*/*.do" />
+			<mvc:exclude-mapping path="/memb/login.do" />
+			<mvc:exclude-mapping path="/memb/signup.do" />
+
+			<bean class="common.interceptor.AuthCheckInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+	<!-- [1] Datasource 빈 선언 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe" />
+		<property name="username" value="hr" />
+		<property name="password" value="a1234" />
+	</bean>
+
+	<!-- [2] SqlSessionFactoryBean 빈 선언 -->
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:mapper/membMapper.xml</value>
+				<value>classpath:mapper/infoMapper.xml</value>
+				<value>classpath:mapper/favorMapper.xml</value>
+			</list>
+		</property>
+
+		<!-- <property name="configLocation" value="classpath:mapper/configuration.xml" /> -->
+	</bean>
+
+	<!-- [3] SqlSessionTemplate 빈 선언 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactoryBean" />
+	</bean>
+
+
+	<!-- 선언적 트랜잭션 : <tx:advice>태그를 이용한 트랜젹션 -->
+
+	<!-- [4] TransactionManager 빈 선언 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- [5] 선언적 트랜잭션 : <tx:advice>태그를 이용한 트랜잭션 처리 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*Process" rollback-for="org.springframework.dao.DuplicateKeyException" />
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+		<aop:pointcut expression="execution(*  service.*ServiceImp.*Process(..))" id="aa" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="aa" />
+	</aop:config>
+
+	<!-- tiles 설정 -->
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles/tiles.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- ViewResolver -->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="1" />
+	</bean>
+
+	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+		<property name="order" value="2" />
+	</bean>
+
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+		<property name="order" value="2" />
+	</bean>
+	<!-- Controller -->
+	<bean class="com.mycompany.myapp.HomeController" />
+
+
+</beans>

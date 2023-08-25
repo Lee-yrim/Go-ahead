@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -43,18 +44,29 @@ public class FavorController {
 	public ModelAndView favorExecute(FavorDTO dto, HttpSession session, ModelAndView mav) {
 //		favorDao.favor_list(favorDTO);
 //		mav.addObject("favor", favorDao.favor_list(favorDTO));
-		System.out.println(favorService.favorList(dto));
+	//	System.out.println(favorService.favorList(dto));		
+		
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
 		dto.setMemb_id(authInfo.getMemb_id());
 		mav.addObject("favor", favorService.favorList(dto));
 		mav.setViewName("memb/favor");
 		return mav;
-	}
+	}  
+	
+//	@ResponseBody
+//	@RequestMapping(value = "/memb/favorwhy.do", method = RequestMethod.GET)
+//	public void favorWhy(FavorDTO dto, HttpSession session) {
+//		//System.out.println("why:" + dto.getFavor_why());
+//		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
+//		dto.setMemb_id(authInfo.getMemb_id());
+//		favorService.insertFavor(dto); 
+//	}
+
 
 	// 찜한 장소의 정보를 DB에 넣어주고 이어서 찜할 수 있는 처리 매핑
 	@RequestMapping(value = "/memb/heart.do", method = RequestMethod.GET)
 	public void favorExecute(FavorDTO dto, HttpSession session) {
-		System.out.println("info: " + dto.getInfo_seq());
+		//System.out.println("info: " + dto.getInfo_seq());
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
 		dto.setMemb_id(authInfo.getMemb_id());
 		favorService.insertFavor(dto);

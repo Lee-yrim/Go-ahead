@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="detail">
+	<select id="detailInfo" parameterType="detail.dto.DetailDTO" resultType="detail.dto.DetailDTO">
+		select * FROM info
+		WHERE info_seq = #{info_seq}
+	</select>
+	
+	<insert id="save" parameterType="detail.dto.ReviewDTO">
+		INSERT INTO
+		review(rev_seq, write_date, review_content, memb_id, upload)
+		VALUES(rev_seq.nextval, #{write_date}, sysdate, 0,
+		#{review_content, jdbcType=VARCHAR},#{upload, jdbcType=VARCHAR}, #{memb_id, jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	
+<select id="detailReview" resultType="detail.dto.ReviewDTO">
+		<![CDATA[
+			SELECT a.* FROM (
+				SELECT *
+				FROM review
+				ORDER BY write_date DESC
+			)a
+			WHERE ROWNUM <= 5
+		]]>
+	</select>
+	
+	<!-- <resultMap type="detail.dto.ReviewDTO" id="detailReviewList" autoMapping="true">
+		<association property="reviewDTO" javaType="detail.dto.reviewDTO">
+			<result column="rev_seq" property="rev_seq"/>
+		</association>
+	</resultMap>
+	
+	<select id="detailReview" parameterType="detail.dto.ReviewDTO" resultMap="detailReviewList">
+		<![CDATA[
+			SELECT a.* FROM (
+				SELECT *
+				FROM review
+				ORDER BY write_date DESC
+			)a
+			WHERE ROWNUM <= 5
+		]]>
+		
+		<![CDATA[
+			select s.*
+			from( 
+				select rownum as rm, r.*, m.nickname, m.memb_id
+				from review r, attach a, memb m
+				where a.rev_seq(+)=r.rev_seq
+				order by r.write_date desc)s
+			where s.rm>=1 and s.rm<=5
+		]]>
+		
+		select r.*, a.*, m.*
+		from review r, attach a, memb m
+		where a.rev_seq(+)=r.rev_seq
+		order by r.write_date desc
+		
+	</select> -->
+</mapper>
