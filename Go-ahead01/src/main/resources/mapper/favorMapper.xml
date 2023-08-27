@@ -22,7 +22,7 @@
 	</select>
 
 
-	<!-- 찜 추가 -->
+	<!-- 찜 추가 testtest-->
 	<insert id="insertFavor" parameterType="favor.dto.FavorDTO">
 		INSERT INTO
 		favor(favor_seq, info_seq, memb_id, favor_why)
