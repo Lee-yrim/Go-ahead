@@ -3,10 +3,17 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<header class="head-Area">
+<!DOCTYPE html>
+<html lang="ko">
+
+<link href="${pageContext.request.contextPath}/resources/css/header_.css" rel="stylesheet"
+	type="text/css">
+<!-- <link href="/resources/css/header.css" rel="stylesheet" type="text/css"> -->
+<header>
 	<div class="links">
 		<a href="/" class="link_text">진행시켜</a>
 	</div>
+
 	<div class="topMenu">
 		<div class="logoArea">
 			<a href="/myapp/camping.do">
@@ -14,7 +21,7 @@
 					class="img_logo" />
 			</a>
 		</div>
-	
+
 		<div class="gnb" style="height: 100px">
 			<c:choose>
 				<c:when test="${sessionScope.authInfo == null}">
@@ -34,14 +41,15 @@
 			</c:choose>
 		</div>
 	</div>
-</header>
 
-<nav>
-	<div class="nav_items">
-		<ul>
-			<li><a href="/myapp/camping.do">캠핑</a></li>
-			<li><a href="/myapp/glamping.do">글램핑</a></li>
-			<li><a href="/myapp/car.do">차박</a></li>
-		</ul>
-	</div>
-</nav>
+
+	<nav>
+		<div class="nav_items">
+			<ul>
+				<li><a href="/myapp/camping.do">캠핑</a></li>
+				<li><a href="/myapp/glamping.do">글램핑</a></li>
+				<li><a href="/myapp/car.do">차박</a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
