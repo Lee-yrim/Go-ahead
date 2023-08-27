@@ -11,12 +11,11 @@
 		</association>
 	</resultMap>
 
-	<!-- 찜 위꺼랑 차이뭐???????????????//-->
+	<!-- 찜 되어있는 장소들을 출력 -->
 	<select id="favor" parameterType="favor.dto.FavorDTO" resultMap="favorlist">
-		select f.favor_seq, i.*
+		select f.favor_seq, i.*, f.favor_why
 		from favor f, info i
-		where f.info_seq=
-		i.info_seq
+		where f.info_seq = i.info_seq
 		and memb_id = #{memb_id, jdbcType = VARCHAR}
 		order by f.favor_seq desc
 	</select>
@@ -24,15 +23,14 @@
 
 	<!-- 찜 추가 -->
 	<insert id="insertFavor" parameterType="favor.dto.FavorDTO">
-		INSERT INTO
-		favor(favor_seq, info_seq, memb_id, favor_why)
+		INSERT INTO favor(favor_seq, info_seq, memb_id, favor_why)
 		select
-		favor_seq_test.nextval,
-		#{info_seq}, #{memb_id}, #{favor_why} from dual
-		WHERE (SELECT
-		count(*) from favor
-		where
-		info_seq = #{info_seq}) = 0
+		favor_seq.nextval, #{info_seq}, #{memb_id}, #{favor_why, jdbcType=VARCHAR} from dual
+		WHERE (SELECT count(*) 
+				from favor
+				where
+				memb_id=#{memb_id} and
+				info_seq = #{info_seq}) = 0
 	</insert>
 
 	<!-- 찜 취소 -->

@@ -70,7 +70,6 @@ public class FavorController {
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
 		dto.setMemb_id(authInfo.getMemb_id());
 		favorService.insertFavor(dto);
-
 	}
 	
 	// DB에 저장된 찜한 장소의 정보를 삭제하는 매핑

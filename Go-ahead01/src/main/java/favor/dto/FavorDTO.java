@@ -17,13 +17,6 @@ public class FavorDTO {
 
 	}
 	
-	public String getFavor_why() {
-		return favor_why;
-	}
-	
-	public void setFavor_why(String favor_why) {
-		this.favor_why = favor_why;
-	}
 
 	public InfoDTO getInfoDTO() {
 		return infoDTO;
