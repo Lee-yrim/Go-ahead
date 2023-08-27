@@ -56,8 +56,14 @@ background-position: 0 0;
 					
 					<div class="card-body">
 						<h5 class="card-title">${dto.infoDTO.loc_name}</h5>
+						<%-- 기존꺼
 						<p class="card-text" style="height:100px;padding:16px 0px;">${dto.infoDTO.address}</p>
 						<a href="#" class="btn" style="background-color:olive;color:white;border-radius:10px;position:absolute;bottom:10px;">더 보기</a>
+						--%>
+						
+						<p class="card-text" style="padding:16px 0px;">${dto.infoDTO.address}</p>
+						<p class="card-text" style="height:50px;">작성한 찜이유 : ${dto.favor_why}</p>
+						<a href="#" class="btn" style="background-color:olive;color:white;border-radius:10px;bottom:10px;">더 보기</a>
 					</div>
 					</div>
 				</div>   
