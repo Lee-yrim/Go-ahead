@@ -50,7 +50,7 @@
 		<put-attribute name="content" value="/WEB-INF/views/memb/signup.jsp"/>
 	</definition>
 
-	<definition name="detail/detail" extends="baseLayout">
+	<definition name="/detail/detail" extends="baseLayout">
 		<put-attribute name="content" value="/WEB-INF/views/detail/detail.jsp"/>
 	</definition>
 	
