@@ -41,11 +41,20 @@ public class FavorDTO {
 		return memb_id;
 	}
 
-	public FavorDTO(int favor_seq, int info_seq, String memb_id) {
+	public String getFavor_why() {
+		return favor_why;
+	}
+	
+	public void setFavor_why(String favor_why) {
+		this.favor_why = favor_why;
+	}
+	
+	public FavorDTO(int favor_seq, int info_seq, String memb_id, String favor_why) {
 		super();
 		this.favor_seq = favor_seq;
 		this.info_seq = info_seq;
 		this.memb_id = memb_id;
+		this.favor_why = favor_why;
 	}
 
 	public int getFavor_seq() {

@@ -15,17 +15,6 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 
-<script>
-/* 	$(document).ready(function(){
-		alert('ready');
-		$('.btnSave').click(function() {
-			alert('test');
-			$(this).parent().submit();
-		});
-	}); */
-</script>
-
-
 <style>
 .heart {
 width: 80px;
@@ -42,6 +31,7 @@ transition-duration: 0s;
 transition-duration: 1s;
 background-position: 0 0;
 }
+
 </style>
 
 
@@ -56,14 +46,15 @@ background-position: 0 0;
 					<div class="card" style="width:100%;height:100%">
 						<img src="${dto.infoDTO.img}" style="width:100%;height:168px" alt="" />
 					<div style="position: absolute; top: -20px; right: 0px">
+				
+					<form action="delete.do" method='get'>
+					<input type="hidden" name="favor_seq" value="${dto.favor_seq}"/>
+					<input type="hidden" name="info_seq" value="${dto.info_seq}"/>
 						<div class="heart"></div>
+		        	</form>	
 					</div>
+					
 					<div class="card-body">
-					
-					
-					<input type="button" class="btnSave" value="하트" />
-					
-					
 						<h5 class="card-title">${dto.infoDTO.loc_name}</h5>
 						<p class="card-text" style="height:100px;padding:16px 0px;">${dto.infoDTO.address}</p>
 						<a href="#" class="btn" style="background-color:olive;color:white;border-radius:10px;position:absolute;bottom:10px;">더 보기</a>
@@ -74,14 +65,25 @@ background-position: 0 0;
 		</c:forEach>
 	</div>
 	</div>
-	
-<!-- <script>
-      $(function () {
-        $(".heart").on("click", function () {
-          $(this).toggleClass("is-active");
-          alert('찜 목록에 해제되었습니다.');
-      });
-    </script> -->
-	
+ <script>
+	$(document).ready(function(){	
+		$('.heart').click(function() {
+			
+			 $(this).toggleClass("is-active");
+			  var formData =$(this).parent().serialize();
+			  
+			$.ajax({
+				type:'GET',
+				url: 'delete.do',
+				data:formData,
+				success:function(){
+					alert("찜 목록에서 삭제되었습니다.");
+				}
+			});
+		});
+		
+	});
+</script> 
+
 </body>
 </html>

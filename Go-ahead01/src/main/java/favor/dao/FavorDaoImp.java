@@ -34,5 +34,8 @@ public class FavorDaoImp implements FavorDAO {
 		sqlSession.delete("favor.deleteFavor", favor_seq);
 	}
 	
-
+	/*@Override
+	public void deleteFavor(FavorDTO dto) {
+		sqlSession.delete("favor.deleteFavor", dto);
+	}*/
 }

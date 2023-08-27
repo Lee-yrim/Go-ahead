@@ -24,6 +24,45 @@
 		}
 	});
 </script>
+</head>
+<style>
+/* 폼이 footer와 겹쳐서 formArea에서 주석처리 */
+
+.formArea {
+	/* width: 40%; */
+	width: 40%;
+	margin: 0 auto;
+	
+	/* position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%); */
+}
+
+.title-txt {
+	margin: 60px 0;
+}
+
+.title-txt h1 {
+	font-weight: 900;
+	text-transform: uppercase;
+}
+
+.mem-form input::placeholder {
+	color: #999;
+}
+
+.btn-box {
+	text-align: center;
+	padding-top: 40px;
+}
+
+.btn-box .btn {
+	width: 100%;
+	margin: 10px 0;
+}
+@media
+</style>
 <body>
 	<div class="formArea mem-form col-3">
 		<div class="container">

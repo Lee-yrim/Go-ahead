@@ -1,5 +1,6 @@
 package favor.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import favor.dao.FavorDAO;
 import favor.dto.FavorDTO;
@@ -70,5 +72,17 @@ public class FavorController {
 		favorService.insertFavor(dto);
 
 	}
+	
+	// DB에 저장된 찜한 장소의 정보를 삭제하는 매핑
+	@RequestMapping("/memb/delete.do")
+	public String deleteExecute(int favor_seq) {
+		System.out.println("favor_seq" +favor_seq);
+		//ratt.addAttribute("currentPage", currentPage);
+		favorService.deleteFavor(favor_seq);
+		return "redirect:/memb/favor.do";
+	}
+	
+
+	
 
 }
