@@ -1,42 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<!-- bootstrap css -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-	crossorigin="anonymous">
-<!-- //bootstrap css -->
-
-<!-- <link rel="stylesheet" href="resources/css/reset.css"> -->
-<link rel="stylesheet" href="resources/css/common.css">
-<link rel="stylesheet" href="resources/css/main.css">
-<!-- <link rel="stylesheet" href="/cssdemo/popup.css" /> -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
-
-<!-- bootstrap js -->
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-	crossorigin="anonymous"></script>
-<!-- //bootstrap css -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-
-<script type="text/javascript" defer src="/jsdemo/main.js"></script>
-<!-- <script type="text/javascript" src="/jsdemo/popop.js"></script> -->
-
-
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-
 
 <script>
 	$(function() {
@@ -55,8 +19,6 @@
 		});
 	});
 </script>
-
-</head>
 <body>
 	<!-- content -->
 	<div class="container">
@@ -71,11 +33,12 @@
 				<li class="nav-item"><a class="nav-link"
 					href="${pageContext.request.contextPath}/memb/logout.do">
 						${sessionScope.authInfo.nickname}님 로그아웃</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="${pageContext.request.contextPath}/detail.do">상세페이지</a></li>
 			</c:otherwise>
 		</c:choose>
 		<c:forEach var="dto" items="${detailInfoList}">
+			<c:url var = "path" value = "detail.do">
+				<c:param name="info_seq" value = "${dto.info_seq }" />			
+			</c:url>
 			<main class="desc-Area">
 
 				<div class="titleArea">
@@ -183,8 +146,8 @@
 						<div class="container">
 							<h6 class="subTitle">후 &nbsp;&nbsp; 기</h6>
 							<div class="pd-top-60">
-								<form class="rew-write-Area" action="detail.do" method="get">
-									<textarea name="contentText" id="contentText"
+								<form class="rew-write-Area" action="${path }" method=post>
+									<textarea name="review_content" id="review_content"
 										placeholder="생생한 후기 작성을 해주세요!"></textarea>
 									<button type="submit" class="rew-btn">리뷰작성</button>
 								</form>
@@ -213,7 +176,7 @@
 													<td class="rew-list-desc">
 														<p>${rdto.review_content }</p>
 													</td>
-													<td>김쟈쟈</td>
+													<td>${rdto.nickname }</td>
 													<td>${rdto.write_date }</td>
 												</tr>
 											</c:forEach>
@@ -278,5 +241,4 @@
 		<!-- //slideArea -->
 	</div>
 
-</body>
-</html>
+</body> 

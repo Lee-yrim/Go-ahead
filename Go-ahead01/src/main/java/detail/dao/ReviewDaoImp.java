@@ -28,19 +28,12 @@ public class ReviewDaoImp implements ReviewDAO {
 		return sqlSession.insert("detail.detailReviewInsert", dto);
 	}
 
-	@Override
-	public ReviewDTO detailreview(int rev_seq) {
-		return sqlSession.selectOne("detail.detailReview", rev_seq);
-	}
-
-	@Override
-	public String getFile(int rev_seq) {
-		return sqlSession.selectOne("review.getFile",rev_seq);
-	}
+//	 @Override public ReviewDTO detailreview(int rev_seq) { return
+//	 sqlSession.selectOne("detail.detailReview", rev_seq); }
 
 	@Override
 	public void save(ReviewDTO dto) {
-		sqlSession.insert("review.save", dto);
+		sqlSession.insert("detail.save", dto);
 	}
 
 }

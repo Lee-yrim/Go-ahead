@@ -9,16 +9,16 @@
 		WHERE info_seq = #{info_seq}
 	</select>
 	
-	<insert id="save" parameterType="detail.dto.ReviewDTO">
+	<insert id="save" parameterType="detail.dto.ReviewDTO" >
 		INSERT INTO
-		review(rev_seq, write_date, review_content, memb_id, upload)
-		VALUES(rev_seq.nextval, #{write_date}, sysdate, 0,
-		#{review_content, jdbcType=VARCHAR},#{upload, jdbcType=VARCHAR}, #{memb_id, jdbcType=VARCHAR}
+		review
+		VALUES(rev_seq.nextval, sysdate,
+		#{review_content, jdbcType=VARCHAR}, #{memb_id, jdbcType=VARCHAR}
 		)
 	</insert>
 	
 	
-<select id="detailReview" resultType="detail.dto.ReviewDTO">
+<!--   	<select id="detailReview" resultType="detail.dto.ReviewDTO">
 		<![CDATA[
 			SELECT a.* FROM (
 				SELECT *
@@ -27,38 +27,44 @@
 			)a
 			WHERE ROWNUM <= 5
 		]]>
-	</select>
+	</select> -->
 	
-	<!-- <resultMap type="detail.dto.ReviewDTO" id="detailReviewList" autoMapping="true">
-		<association property="reviewDTO" javaType="detail.dto.reviewDTO">
-			<result column="rev_seq" property="rev_seq"/>
+ 	<resultMap type="detail.dto.ReviewDTO" id="reviewList" autoMapping="true">
+		<association property="membDTO" javaType="memb.dto.MembDTO">
+			<result column="memb_id" property="memb_id"/>
 		</association>
-	</resultMap>
+	</resultMap>   
 	
-	<select id="detailReview" parameterType="detail.dto.ReviewDTO" resultMap="detailReviewList">
-		<![CDATA[
-			SELECT a.* FROM (
-				SELECT *
-				FROM review
-				ORDER BY write_date DESC
-			)a
-			WHERE ROWNUM <= 5
-		]]>
+ 	 <select id="detailReview" parameterType="detail.dto.ReviewDTO" resultMap="reviewList">
+
+<!-- 		  <![CDATA[
+		    SELECT b.* 
+		     FROM(SELECT rownum as rm, a.*
+		          FROM (SELECT r.*, m.nickname 
+		          FROM review r, memb m
+		          WHERE r.memb_id=m.memb_id(+)               
+		          ORDER BY r.write_date DESC)a)b
+		     WHERE b.rm>=1 AND b.rm<=5
+		  ]]> -->
 		
-		<![CDATA[
+		 <![CDATA[
 			select s.*
 			from( 
-				select rownum as rm, r.*, m.nickname, m.memb_id
-				from review r, attach a, memb m
-				where a.rev_seq(+)=r.rev_seq
-				order by r.write_date desc)s
-			where s.rm>=1 and s.rm<=5
+			    select rownum as rm, r.*,m.nickname
+			    from review r, memb m
+			    where m.memb_id=r.memb_id
+			    order by r.write_date desc)s
+			where s.rm<=5
 		]]>
+
+<!-- 		<![CDATA[
+			select s.*
+			from( 
+			    select rownum as rm, r.*,m.nickname
+				from review r left outer join memb m
+				on r.memb_id=m.memb_id)s
+			where s.rm>=1 and s.rm<=5
+		]]> -->
 		
-		select r.*, a.*, m.*
-		from review r, attach a, memb m
-		where a.rev_seq(+)=r.rev_seq
-		order by r.write_date desc
-		
-	</select> -->
+	</select>
 </mapper>
