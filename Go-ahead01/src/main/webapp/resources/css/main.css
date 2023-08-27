@@ -108,9 +108,9 @@
   width: 20px;
 }
 
-/* .desc-table tr:last-child .td-r::before {
+.desc-table tr:last-child .td-r::before {
   border-left: 0;
-} */
+}
 
 .desc-table tr .td-r {
   text-align: left;
