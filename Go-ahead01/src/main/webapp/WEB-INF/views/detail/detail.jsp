@@ -21,26 +21,12 @@
 </script>
 <body>
 	<!-- content -->
-	<div class="container">
-		<c:choose>
-			<c:when test="${sessionScope.authInfo == null}">
-				<li class="nav-item"><a class="nav-link"
-					href="${pageContext.request.contextPath}/memb/login.do">로그인</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="${pageContext.request.contextPath}/memb/signup.do">회원가입</a></li>
-			</c:when>
-			<c:otherwise>
-				<li class="nav-item"><a class="nav-link"
-					href="${pageContext.request.contextPath}/memb/logout.do">
-						${sessionScope.authInfo.nickname}님 로그아웃</a></li>
-			</c:otherwise>
-		</c:choose>
+	<div class="container pd-top-100">
 		<c:forEach var="dto" items="${detailInfoList}">
 			<c:url var = "path" value = "detail.do">
 				<c:param name="info_seq" value = "${dto.info_seq }" />			
 			</c:url>
 			<main class="desc-Area">
-
 				<div class="titleArea">
 					<h1 class="title">${dto.loc_name }</h1>
 				</div>
@@ -50,19 +36,14 @@
 							<div class="imgArea">
 								<img src="${dto.img }" alt="" />
 							</div>
-							<!-- <div class="heartArea">
-								<div class="stage">
-									<div class="heart"></div>
-								</div>
-							</div> -->
 						</div>
 					</div>
 					<div class="text-Area col-6">
 						<table class="desc-table">
-							<%-- <colgroup>
-							<col width="10%">
-							<col width="90%">
-						</colgroup> --%>
+							<colgroup>
+								<col width="10%">
+								<col width="90%">
+							</colgroup>
 							<tbody>
 								<tr>
 									<td scope="col" class="td-l">주소</td>
@@ -126,15 +107,16 @@
 					</li>
 				</ul>
 			</div>
-
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade show active" id="detail-tab-pane"
 					role="tabpanel" aria-labelledby="detail-tab" tabindex="0">
 					<!-- 상세페이지 -->
-					<main>
+					<main class="content">
 						<div class="container">
 							<h1 class="title">상세페이지</h1>
-							<img src="/img/${dto.info_content }">
+							<div class="thumb-img">
+								<img src="/img/${dto.info_content }">
+							</div>
 						</div>
 					</main>
 					<!-- //상세페이지 -->
@@ -143,7 +125,7 @@
 					aria-labelledby="rew-tab" tabindex="0">
 					<!-- 후기 -->
 					<main>
-						<div class="container">
+						<div class="content">
 							<h6 class="subTitle">후 &nbsp;&nbsp; 기</h6>
 							<div class="pd-top-60">
 								<form class="rew-write-Area" action="${path }" method=post>
@@ -191,7 +173,7 @@
 			</div>
 		</c:forEach>
 		<!-- slideArea -->
-		<main>
+		<main class="content">
 			<div class="container">
 				<div class="child">
 					<h1 class="subTitle">같은 연령대의 회원들이 본 장소</h1>
@@ -235,10 +217,8 @@
 						<div class="swiper-pagination"></div>
 					</div>
 				</div>
-
 			</div>
 		</main>
 		<!-- //slideArea -->
 	</div>
-
 </body> 

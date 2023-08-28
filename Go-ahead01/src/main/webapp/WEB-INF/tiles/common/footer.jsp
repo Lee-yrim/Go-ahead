@@ -6,9 +6,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="${pageContext.request.contextPath}/resources/css/footer.css"
-	rel="stylesheet" type="text/css">
+
+<%--     <link href="${pageContext.request.contextPath}/resources/css/footer.css"
+	rel="stylesheet" type="text/css"> --%>
 </head>
 
 <body>
@@ -16,21 +16,17 @@
         <div class="area_user_row">
             <span class="text_bold-13">주소</span>
             <ul>
-                <li><a href="/">서울 강남</a></li>
+                <li>서울 강남</li>
             </ul>
         </div>
-        <div class="area_user_row">
+<!--         <div class="area_user_row">
             <span class="text_bold-13">이메일</span>
-            <ul>
-                <li><a href="/"></a></li>
-
-            </ul>
-        </div>
+        </div> -->
         <div class="area_user_row">
-            <span class="text_bold-13">COPYRIGHT</span>
+            <span class="text_bold-13">&copy; COPYRIGHT All rtghts reserves. </span>
             <ul>
-                <li><a href="/">진행시켜,</a></li>
-                <li><a href="/">IN.EZEN ACADEMY</a></li>
+                <li>진행시켜, IN.EZEN ACADEMY</li>
+                <!-- <li><a href="/">IN.EZEN ACADEMY</a></li> -->
             </ul>
         </div>
  
