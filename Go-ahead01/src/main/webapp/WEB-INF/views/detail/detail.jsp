@@ -185,34 +185,25 @@
 				<div class="swiper-Area pd-top-60">
 					<div class="swiper-container">
 						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-								<img src="resources/images/camp1.jpg">
-								<div class="swiper-text">노을 캠핑장</div>
-							</div>
-							<div class="swiper-slide">
-								<img src="resources/images/camp1.jpg">
-								<div class="swiper-text">노을 캠핑장</div>
-							</div>
-							<div class="swiper-slide">
-								<img src="resources/images/camp1.jpg">
-								<div class="swiper-text">노을 캠핑장</div>
-							</div>
+							<c:forEach var="adto" items="${algolist}">
+								<c:url var="algopath" value="detail.do">
+									<c:param name="info_seq" value="${adto.info_seq}" />
+								</c:url>
+								<div class="swiper-slide">
+									<img src="${adto.img}" style="width: 100%; height: 168px" />
+									<div class="swiper-text"><a href="${algopath}" class="btn"
+										>${adto.loc_name}</a></div>
+									
+								</div>
+							</c:forEach>
 						</div>
 
-						<!-- 네비게이션 -->
-						<div class="swiper-button-next"></div>
-						<!-- 다음 버튼 (오른쪽에 있는 버튼) -->
-						<div class="swiper-button-prev"></div>
-						<!-- 이전 버튼 -->
-
-						<!-- 페이징 -->
-						<div class="swiper-pagination"></div>
+					
 					</div>
 				</div>
 			</div>
 		</main>
 		<!-- //slideArea -->
 	</div>
-
 
 </body>
