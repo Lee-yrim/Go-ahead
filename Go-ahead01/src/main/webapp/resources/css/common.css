@@ -49,9 +49,27 @@ table {
 .btn-Olive {
     background-color: olive;
     color: #fff;
+    border: 1px solid olive;
+}
+
+.btn-Olive:hover {
+	border: 1px solid olive;
+}
+
+.content {
+	padding: 100px 0;
 }
 
 /* padding */
+.pd-top-100 {
+	padding-top: 100px;
+}
 .pd-top-60  {
     padding-top: 60px;
+}
+.pd-top-20 {
+	padding-top: 20px;
+}
+.pd-bottom-40 {
+	padding-bottom: 40px;
 }
