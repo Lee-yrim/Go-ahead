@@ -193,7 +193,6 @@
 									<img src="${adto.img}" style="width: 100%; height: 168px" />
 									<div class="swiper-text"><a href="${algopath}" class="btn"
 										>${adto.loc_name}</a></div>
-									
 								</div>
 							</c:forEach>
 						</div>
