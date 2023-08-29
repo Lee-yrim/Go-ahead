@@ -142,7 +142,7 @@ color:olive;
 }
 
 .list-item {
-	margin-bottom: 40px;
+	margin-bottom: 24px;
 }
 
 .content .card {
@@ -154,6 +154,8 @@ color:olive;
 	width: 100%; 
 	height: 168px;
 }
+
+
 
 .content .card-title {
 	font-size: 1.4rem;
@@ -304,6 +306,10 @@ color:olive;
 .imgArea img{
     display: block;
     width: 100%;
+}
+
+.content .thumb-img img {
+	height: auto;
 }
 
 .heartArea  {

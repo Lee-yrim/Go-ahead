@@ -2,19 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<!-- bootstrap js -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-bootstrap css
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-
-<link rel="stylesheet" href="resources/kakaomap.css" />
-<script type="text/javascript" defer src="resources/kakaomap.js"></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=88c7bc6d3721b31759169b4c8277a4f9&libraries=services"></script> -->
-
 
 <body>
 	<div class="content">
@@ -38,7 +25,7 @@ bootstrap css
 							</c:url>
 							<c:set var="variety" value="${dto.variety}" />
 							<c:if test="${fn:contains(variety, '일반')}">
-								<div class="col-3" style="margin-bottom: 10px;">
+								<div class="col-3 list-item">
 									<div class="card" style="width: 100%; height: 100%">
 										<c:set var="thumnail" value="${dto.img}" />
 										<c:choose>

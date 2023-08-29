@@ -64,7 +64,7 @@ public class FavorController {
 
 
 	// 찜한 장소의 정보를 DB에 넣어주고 이어서 찜할 수 있는 처리 매핑
-	@RequestMapping(value = "/heart.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/memb/heart.do", method = RequestMethod.GET)
 	public void favorExecute(FavorDTO dto, HttpSession session) {
 		//System.out.println("info: " + dto.getInfo_seq());
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
@@ -73,7 +73,7 @@ public class FavorController {
 	}
 	
 	// DB에 저장된 찜한 장소의 정보를 삭제하는 매핑
-	@RequestMapping("/delete.do")
+	@RequestMapping("/memb/delete.do")
 	public String deleteExecute(int favor_seq) {
 		System.out.println("favor_seq" +favor_seq);
 		//ratt.addAttribute("currentPage", currentPage);

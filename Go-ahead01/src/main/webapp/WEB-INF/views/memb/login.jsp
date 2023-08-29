@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-
 <script>
 	$(document).ready(function() {
 		let returnUrl = "${param.returnUrl}";
@@ -9,7 +7,7 @@
 			alert(returnUrl + "요청한 페이지는 회원에게만 제공됩니다.");
 
 		if ($.cookie("REMEMBER")) {
-			$("#memb_Id").val($.cookie("REMEMBER"));
+			$("#memb_id").val($.cookie("REMEMBER"));
 			$("#rememberId").prop('checked', true);
 
 			$('#rememberId').click(function() {
@@ -49,7 +47,7 @@
 						</div>
 						<div class="btn-box">
 							<button type="submit" class="btn btn-Olive">로그인</button>
-							<a href="${pageContext.request.contextPath}/memb/signup.do" type="button"
+							<a href="${pageContext.request.contextPath}/signup.do" type="button"
 								class="btn btn-Olive">회원가입</a>
 						</div>
 					</form>
