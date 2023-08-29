@@ -1,0 +1,44 @@
+.swiper-container {
+    margin: auto;
+    /* 슬라이드박스 양쪽 위치? */
+    left: 57px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: #68c919;
+    /* 이미지 박스 아래 값 */
+    top: 150px;
+}
+
+.swiper-text{
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #FFEEBC;
+    text-align: center;
+    position: absolute;
+    top: 91%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/* 슬라이드 박스크기 */
+.swiper-slide {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: #233b81;
+}
+
+/* 이미지크기 조절 */
+.swiper-slide img {
+    margin: auto;
+    margin-top: 10px;
+    width: 410px;
+    height: 520px;
+    display: flex;
+    align-items: center;
+    /* 하위 요소들 수직 가운데정렬 */
+    background: #772424;
+}

@@ -2,28 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<!-- bootstrap js -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-<!-- bootstrap css -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-
-<link rel="stylesheet" href="resources/kakaomap.css" />
+<!-- <link rel="stylesheet" href="resources/kakaomap.css" />
 <script type="text/javascript" defer src="resources/kakaomap.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=88c7bc6d3721b31759169b4c8277a4f9&libraries=services"></script>
-</head>
+ -->
 
-
-
-
-<style>
+<!-- <style>
 #map {
 	width: 100%;
 	height: 500px;
@@ -57,8 +42,9 @@ overflow:hidden; */
 #myTab>li>button {
 	color: olive;
 }
-</style>
+</style> -->
 <body>
+<div class="content">
 	<ul class="nav justify-content-end" id="myTab" role="tablist">
 		<li class="nav-item" role="presentation">
 			<button class="nav-link active" id="card-tab" data-bs-toggle="tab" data-bs-target="#card" type="button" role="tab" aria-controls="card"
@@ -72,7 +58,7 @@ overflow:hidden; */
 
 	<div class="tab-content" id="myTabContent">
 		<div class="tab-pane fade show active" id="card" role="tabpanel" aria-labelledby="#card_tab" tabindex="0">
-			<div class="container" style="margin-top: 100px">
+			<div class="container pd-top-20">
 				<div class="row">
 					<c:forEach items="${car}" var="dto">
 						<c:url var="path" value="detail.do">
@@ -80,7 +66,7 @@ overflow:hidden; */
 						</c:url>
 						<c:set var="variety" value="${dto.variety}" />
 						<c:if test="${fn:contains(variety, '자동차')}">
-							<div class="col-3" style="margin-bottom: 10px;">
+							<div class="col-3 list-item">
 								<div class="card" style="width: 100%; height: 100%">
 									<c:set var="thumnail" value="${dto.img}" />
 									<c:choose>
@@ -113,7 +99,7 @@ overflow:hidden; */
 			</div>
 		</div>
 	</div>
-
+</div>
 	<script>
 		$(function() {
 			$(".heart").on("click", function() {
@@ -134,4 +120,3 @@ overflow:hidden; */
 	</script>
 
 </body>
-</html>

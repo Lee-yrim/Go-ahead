@@ -40,7 +40,7 @@ public class FavorController {
 	}
 
 	// 로그인 한 회원이 찜한 목록 출력해주는 favor.do 호출
-	@RequestMapping(value = "/memb/favor.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/favor.do", method = RequestMethod.GET)
 	public ModelAndView favorExecute(FavorDTO dto, HttpSession session, ModelAndView mav) {
 //		favorDao.favor_list(favorDTO);
 //		mav.addObject("favor", favorDao.favor_list(favorDTO));

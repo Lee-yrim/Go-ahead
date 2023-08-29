@@ -31,7 +31,7 @@ public class MembController {
 	}
 
 	// 회원가입 페이지 in
-	@RequestMapping(value = "/memb/signup.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/signup.do", method = RequestMethod.GET)
 	public ModelAndView addMember(ModelAndView mav) {
 		mav.setViewName("memb/signup");
 		
@@ -39,7 +39,7 @@ public class MembController {
 	}
 
 	// 회원가입 처리
-	@RequestMapping(value = "/memb/signup.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/signup.do", method = RequestMethod.POST)
 	public String addMember(MembDTO membDTO, HttpSession session) {
 		System.out.println(membDTO.getMemb_id());
 		
@@ -59,14 +59,14 @@ public class MembController {
 	}
 
 	// 로그인 페이지 in
-	@RequestMapping(value = "/memb/login.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String loginMember() {
 
 		return "memb/login";
 	}
 
 	// 로그인 처리
-	@RequestMapping(value = "/memb/login.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public String loginMember(MembDTO membDTO, HttpSession session, HttpServletResponse resp) {
 
 		try {
@@ -105,7 +105,7 @@ public class MembController {
 	}
 
 	// 로그아웃 처리
-	@RequestMapping(value = "/memb/logout.do")
+	@RequestMapping(value = "/logout.do")
 	public String logoutMember(HttpSession session) {
 		session.invalidate();
 		System.out.println("logout OK");
@@ -114,7 +114,7 @@ public class MembController {
 	}
 
 	// 마이페이지(회원수정) in
-	@RequestMapping(value = "/memb/mypage.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage.do", method = RequestMethod.GET)
 	public ModelAndView updateMemb(ModelAndView mav, HttpSession session) {
 		// System.out.println(memb_id);
 		
@@ -128,7 +128,7 @@ public class MembController {
 	}
 
 	// 회원수정 처리
-	@RequestMapping(value = "/memb/mypage.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/mypage.do", method = RequestMethod.POST)
 	public String updateMemb(MembDTO membDTO, HttpSession session) {
 		AuthInfo authInfo = membService.updateMembProcess(membDTO);
 		session.setAttribute("authInfo", authInfo);

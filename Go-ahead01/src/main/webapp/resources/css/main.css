@@ -6,96 +6,68 @@
 
 
 
-/* 로그인, 마이페이지. 회원가입 색깔 */
-a {
-    text-decoration: none;
-    /* 기본 밑줄을 제거합니다 */
-    color: #f00a0a;
-}
+/* header */
 
-a:hover {
-   /* 눌렀을때 색깔 변화 */
-    color: #adbeeb;
-    text-decoration: underline;
-    /* 마우스 커서가 올라갔을 때 밑줄을 생성합니다*/
-}
-
-header.head-Area {
-    margin: auto;
-    /* header의 양쪽 여백(margin)을 동등하게 맞춤 -> 수평가운데정렬 */
+header {
     width: 100%;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    /* 하위 요소들 수직 가운데정렬 */
-    position: relative;
     background: #f1f2f5;
     border-top: 1px solid #adbeeb;
 }
 
-fieldset {
-    border: none;
-    /* 기본 border 없애기(이 코드를 지우고 기본 border를 확인해보세요) */
+.topMenu {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	padding: 20px;
 }
 
-.visually-hidden {
-    /* legend 안보이게 설정. 이렇게하면 접근성을 준수하면서 디자인을 해치지 않습니다. */
-    position: absolute !important;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    clip: rect(1px 1px 1px 1px);
-    clip: rect(1px, 1px, 1px, 1px);
-    white-space: nowrap;
-}
-
-.links {
-    /* 진행시켜 위치값 */
+/* .links {
+    진행시켜 위치값
     position: absolute;
     top: 0;
     right: 23%;
-}
+} */
 
-/* 로그인 마이페이지 홈 글자/왼쪽정렬 */
 .link_text {
-    position: relative;
     font-size: 13px;
-    margin-right: 5px;
+    margin: 0 10px;
 }
 
 .img_logo {
-    margin-bottom: 12px;
-    width: 220px;
-    height: 100px;
+    width: 100%;
 }
 
 /* nav */
 /* 캠핑 글램핑 차박 박스 사이즈 */
-header>nav {
+/* header>nav {
     width: 100%;
     height: 65px;
     position: absolute;
     bottom: 0;
-}
+} */
+
+
 
 /* 캠핑 글램핑 차박 사이즈 */
 .nav_items {
+	padding: 20px;
     width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 20px;
-    /* font-weight: bold; */
+    font-size: 1.4rem;
+    font-weight: 600;
     /* 각 테두리 */
     border-top: 1px solid #adbeeb;
 
 }
 
+.nav_items ul {
+	display: flex;
+    align-items: center;
+}
+
 /* 캠핑, 그램핑, 차박 왼쪽 마진값 */
 .nav_items ul>li {
-    display: inline-block;
-    margin-left: 3px;
+    padding-right: 20px;
 }
 
 /* 캠핑 글램핑 차박 글자 색깔 */
@@ -110,8 +82,206 @@ header>nav {
     /* 마우스 커서가 올라갔을 때 밑줄을 생성합니다*/
 }
 
+header a {
+    text-decoration: none !important;
+    /* color: #f00a0a !important; */
+    color: olive !important;
+}
+
+header a:hover {
+    color: #adbeeb !important;
+    text-decoration: underline !important;
+}
+
+/* // header */
+
+/* info */
+
+/* #map{
+width:100%;
+height:600px;
+margin:0 auto;
+overflow:hidden;
+}
+
+#myTab>li>button {
+color:olive; 
+} */
+
+#map {
+	width: 100%;
+	height: 500px;
+	/* margin:0 auto;
+	overflow:hidden; */
+}
+
+.map_wrap {
+	margin-top:100px;
+	margin-bottom:200px;
+}
+
+.heart {
+	width: 80px;
+	height: 80px;
+	background:
+		url("https://cssanimation.rocks/images/posts/steps/heart.png")
+		no-repeat;
+	background-position: 0 0;
+	cursor: pointer;
+	transition: background-position 1s steps(28);
+	transition-duration: 0s;
+}
+
+.heart.is-active {
+	transition-duration: 1s;
+	background-position: -2800px 0;
+}
+
+#myTab>li>button {
+	color: olive;
+}
+
+.list-item {
+	margin-bottom: 24px;
+}
+
+.content .card {
+	padding-bottom: 20px;
+}
+
+.content img {
+	border-radius: 5px 5px 0 0;
+	width: 100%; 
+	height: 168px;
+}
 
 
+
+.content .card-title {
+	font-size: 1.4rem;
+	font-weight: 600;
+}
+
+.content .card-text {
+	height: 100px;
+	padding: 20px 0;
+}
+
+.content .card-body a.btn {
+	background-color: olive; 
+	color: white; 
+	border-radius: 5px; 
+	position: absolute; 
+	bottom: 15px;
+}
+
+/* // info */
+
+/* member */
+
+#login-wrap .content {
+	padding: 160px 0;
+}
+
+.membForm {
+        width: 40%;
+        margin: 0 auto;
+    }
+.title-txt {
+	padding-bottom: 40px;
+}
+.title-txt h1 {
+	font-size: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+.btn-box {
+    padding: 40px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.btn-box button {
+    width: 48%;
+}
+.btn-box a.btn {
+	width: 45%
+}
+
+.btn-box .btn {
+	margin: 10px 0;
+	padding: 10px 0;
+}
+
+#mypage-wrap .user-img {
+	margin: 20px auto;
+	border-radius: 100px;
+	width: 100px; 
+	height: 100px;
+	border: 1px solid olive;
+}
+
+#mypage-wrap .content .user-img img {
+	width: 100%;
+	height: auto;
+}
+
+#mypage-wrap .mem-form .mb-3 {
+	padding: 0 0 15px 20px;
+	border-bottom: 1px solid #d9d9d9;
+	display: flex;
+	justify-content: space-between;
+    align-items: center;
+}
+
+#mypage-wrap .mem-form .mb-3.user-thumb-imgArea {
+	padding-left: 0;
+	flex-direction: column;
+}
+
+#mypage-wrap .mem-form .mb-3:last-child {
+	border: 0;
+}
+
+#mypage-wrap .mem-form .mb-3 span {
+	line-height: 1.4rem;
+}
+
+.mem-form input {
+	border: 1px solid olive;
+	border-radius: 5px 0 5px 0;
+	padding: 5px;
+}
+
+.mem-form input::placeholder {
+	color: #999;
+}
+
+/* .idarea {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+.idarea>div {
+	width: 80%;
+} */
+
+#mypage-wrap .content .text-l {
+	font-weight: 600;
+	color: olive;
+}
+
+#mypage-wrap .content .text-r {
+	width: 80%;
+}
+
+#mypage-wrap .content .user-info {
+	width: 96%;
+    margin: 0 auto;
+	padding-top: 10px;
+}
+
+/* detail */
 .title {
   text-align: center;
   font-weight: 900;
@@ -129,13 +299,17 @@ header>nav {
   margin-right: 20px;
 }
 .imgArea  {
-    /* border-radius: 5px 5px 0 0; */
+    border-radius: 5px;
     overflow: hidden;
 }
 
 .imgArea img{
     display: block;
     width: 100%;
+}
+
+.content .thumb-img img {
+	height: auto;
 }
 
 .heartArea  {
@@ -171,11 +345,6 @@ header>nav {
   justify-content: space-between;
 }
 
-/* .text-Area {
-  border: 1px solid olive;
-  border-radius: 10px;
-} */
-
 .desc-table {
   width: 100%;
   padding: 20px;
@@ -183,7 +352,7 @@ header>nav {
 
 .desc-table tr{
   width: 100%;
-  line-height: 2.4rem;
+  line-height: 1rem;
   font-weight: 200;
   border-bottom: 1px solid #d9d9d9;
 }
@@ -192,6 +361,7 @@ header>nav {
   border-bottom: 0;
   border-right: 0;  
   padding-bottom: 20px;
+  padding-left: 20px;
 }
 
 .desc-table tr input {
@@ -204,7 +374,7 @@ header>nav {
 
 .desc-table tr .td-l {
   text-align: center;
-  padding-left: 40px;
+  padding-left:20px;
   color: olive;
 }
 
@@ -218,6 +388,7 @@ header>nav {
 
 .desc-table tr:last-child .td-r::before {
   border-left: 0;
+  content: none;
 }
 
 .desc-table tr .td-r {
@@ -235,9 +406,10 @@ header>nav {
 
 .desc-like > .heartArea {
   position: absolute;
-  top: 6%;
-  left: 22%;
+  top: 0;
+  left: 10%;
 }
+
 /* //thumb-Area */
 
 .tab-Area button.nav-link {
@@ -249,9 +421,15 @@ header>nav {
 
 .tab-Area button.nav-link.active {
   /* display: block; */
-  color: #fff;
+  color: #fff !important;
   background-color: olive;
 }
+
+.content .thumb-img {
+	width: 100%;
+	margin: 0 auto;
+}
+
 .rew-write-Area {
   display: flex;
   justify-content: space-between;
@@ -387,34 +565,57 @@ header>nav {
   color: #fff;
 }
 
-.formArea {
-	/* 	width: 40%; */
-	margin: 0 auto;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
+@media (max-width:1000px) {
+	.card {
+		margin-right: 0 !important;
+	}
+	.desc-table {
+		margin-top: 40px;
+	}
+	.col-6 {
+		width: 100%;
+	}
+	.flex {
+		flex-wrap: wrap;
+		flex-wrap: column;
+	}
 }
 
-.title-txt {
-	margin: 60px 0;
+/* footer */
+
+
+ul {
+    /* ul의 하위요소(li) 수평정렬을 위해 기본마진, 패딩 제거 */
+    margin: 0;
+    padding: 0;
 }
 
-.title-txt h1 {
-	font-weight: 900;
-	text-transform: uppercase;
+footer {
+    /* width: 1440px; */
+    width: 100%;
+    padding: 20px;
+    /* 각각 위 오른쪽 아래 왼쪽 */
+    display: flex;
+    flex-direction: column;
+    /* 요소들을 수평정렬 */
+    font-size: 0.6rem;
+    line-height: 1.8rem;
+    background: #f1f2f5;
+    border-top: 1px solid #adbeeb;
 }
 
-.mem-form input::placeholder {
-	color: #999;
+.area_user_row {
+    display: flex;
+    color: #102c5c;
+    padding: 5px 0;
 }
 
-.btn-box {
-	text-align: center;
-	padding-top: 40px;
+.area_user_row ul>li {
+    display: inline-block;
+    margin-left: 10px;
 }
 
-.btn-box .btn {
-	width: 100%;
-	margin: 10px 0;
+.text_bold-13 {
+    font-weight: bold;
 }
+

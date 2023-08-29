@@ -4,43 +4,32 @@
 
 <script>
 	$(function() {
-		$(".heart").on("click", function() {
-			$(this).toggleClass("is-active");			
-			let params = $(this).parents('.desc-like').next().children().first().serialize();	
+		$(".heart").on(
+				"click",
+				function() {
+					$(this).toggleClass("is-active");
+					let params = $(this).parents('.desc-like').next()
+							.children().first().serialize();
 
-			$.ajax({
-				type : 'GET',
-				url : 'memb/heart.do',
-				data : params,
-				success : function() {
-					alert("ok");
-				}
-			});
-		});
+					$.ajax({
+						type : 'GET',
+						url : 'memb/heart.do',
+						data : params,
+						success : function() {
+							alert("ok");
+						}
+					});
+				});
 	});
 </script>
 <body>
 	<!-- content -->
-	<div class="container">
-		<c:choose>
-			<c:when test="${sessionScope.authInfo == null}">
-				<li class="nav-item"><a class="nav-link"
-					href="${pageContext.request.contextPath}/memb/login.do">로그인</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="${pageContext.request.contextPath}/memb/signup.do">회원가입</a></li>
-			</c:when>
-			<c:otherwise>
-				<li class="nav-item"><a class="nav-link"
-					href="${pageContext.request.contextPath}/memb/logout.do">
-						${sessionScope.authInfo.nickname}님 로그아웃</a></li>
-			</c:otherwise>
-		</c:choose>
+	<div class="container pd-top-100">
 		<c:forEach var="dto" items="${detailInfoList}">
-			<c:url var = "path" value = "detail.do">
-				<c:param name="info_seq" value = "${dto.info_seq }" />			
+			<c:url var="path" value="detail.do">
+				<c:param name="info_seq" value="${dto.info_seq }" />
 			</c:url>
 			<main class="desc-Area">
-
 				<div class="titleArea">
 					<h1 class="title">${dto.loc_name }</h1>
 				</div>
@@ -50,19 +39,14 @@
 							<div class="imgArea">
 								<img src="${dto.img }" alt="" />
 							</div>
-							<!-- <div class="heartArea">
-								<div class="stage">
-									<div class="heart"></div>
-								</div>
-							</div> -->
 						</div>
 					</div>
 					<div class="text-Area col-6">
 						<table class="desc-table">
-							<%-- <colgroup>
-							<col width="10%">
-							<col width="90%">
-						</colgroup> --%>
+							<colgroup>
+								<col width="10%">
+								<col width="90%">
+							</colgroup>
 							<tbody>
 								<tr>
 									<td scope="col" class="td-l">주소</td>
@@ -88,20 +72,20 @@
 
 								<tr>
 									<td scope="col" class="desc-like td-l col-2">
-									
-									<div class="heartArea">
-												<div class="stage">
-													<div class="heart"></div>
-												</div>
-											</div></td>											
+
+										<div class="heartArea">
+											<div class="stage">
+												<div class="heart"></div>
+											</div>
+										</div>
+									</td>
 									<td class="td-r">
-									<form> 									
-									<input
-										type="hidden" name="info_seq" value="${dto.info_seq}" />
-									<input type="text" name="favor_why" id="favor_why"
-										placeholder="찜하는 이유를 적어보세요!" />
-							     	</form>
-							  	</td>
+										<form>
+											<input type="hidden" name="info_seq" value="${dto.info_seq}" />
+											<input type="text" name="favor_why" id="favor_why"
+												placeholder="찜하는 이유를 적어보세요!" />
+										</form>
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -126,15 +110,16 @@
 					</li>
 				</ul>
 			</div>
-
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade show active" id="detail-tab-pane"
 					role="tabpanel" aria-labelledby="detail-tab" tabindex="0">
 					<!-- 상세페이지 -->
-					<main>
+					<main class="content">
 						<div class="container">
 							<h1 class="title">상세페이지</h1>
-							<img src="/img/${dto.info_content }">
+							<div class="thumb-img">
+								<img src="/img/${dto.info_content }">
+							</div>
 						</div>
 					</main>
 					<!-- //상세페이지 -->
@@ -143,7 +128,7 @@
 					aria-labelledby="rew-tab" tabindex="0">
 					<!-- 후기 -->
 					<main>
-						<div class="container">
+						<div class="content">
 							<h6 class="subTitle">후 &nbsp;&nbsp; 기</h6>
 							<div class="pd-top-60">
 								<form class="rew-write-Area" action="${path }" method=post>
@@ -191,26 +176,15 @@
 			</div>
 		</c:forEach>
 		<!-- slideArea -->
-		<main>
+		<main class="content">
 			<div class="container">
 				<div class="child">
 					<h1 class="subTitle">같은 연령대의 회원들이 본 장소</h1>
 				</div>
+
 				<div class="swiper-Area pd-top-60">
 					<div class="swiper-container">
 						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-								<img src="resources/images/camp1.jpg">
-								<div class="swiper-text">노을 캠핑장</div>
-							</div>
-							<div class="swiper-slide">
-								<img src="resources/images/camp1.jpg">
-								<div class="swiper-text">노을 캠핑장</div>
-							</div>
-							<div class="swiper-slide">
-								<img src="resources/images/camp1.jpg">
-								<div class="swiper-text">노을 캠핑장</div>
-							</div>
 							<div class="swiper-slide">
 								<img src="resources/images/camp1.jpg">
 								<div class="swiper-text">노을 캠핑장</div>
@@ -235,10 +209,10 @@
 						<div class="swiper-pagination"></div>
 					</div>
 				</div>
-
 			</div>
 		</main>
 		<!-- //slideArea -->
 	</div>
 
-</body> 
+
+</body>
