@@ -15,8 +15,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import common.file.FileUpload;
+import detail.dto.AlgoDTO;
 import detail.dto.DetailDTO;
 import detail.dto.ReviewDTO;
+import detail.service.AlgoService;
 import detail.service.DetailService;
 import detail.service.ReviewService;
 import memb.dto.AuthInfo;
@@ -26,6 +28,7 @@ public class DetailController {
 
 	private DetailService detailService;
 	private ReviewService reviewService;
+	private AlgoService algoService;
 	
 	public DetailController() {
 		// TODO Auto-generated constructor stub
@@ -39,22 +42,41 @@ public class DetailController {
 		this.reviewService = reviewService;
 	}
 	
+	public void setAlgoService(AlgoService algoService) {
+		this.algoService = algoService;
+	}
+	
 //	@RequestMapping(value = "/detail.do")
 //	public String ReviewOpen() {
 //		
 //		return "/detail/detail";
 //	}
 	
+//	@RequestMapping(value = "/detail.do", method = RequestMethod.GET)
+//	public ModelAndView listExecute(DetailDTO dto, ReviewDTO rdto, ModelAndView mav) {
+//		System.out.println(detailService.infoListProcess(dto));
+//		mav.addObject("detailInfoList", detailService.infoListProcess(dto));
+//		mav.addObject("reviewlist", reviewService.reviewListProcess(rdto));
+//		mav.setViewName("/detail/detail");
+//		
+//		return mav;
+//	}
+	
 	@RequestMapping(value = "/detail.do", method = RequestMethod.GET)
-	public ModelAndView listExecute(DetailDTO dto, ReviewDTO rdto ,ModelAndView mav) {
+	public ModelAndView listExecute(DetailDTO dto, ReviewDTO rdto, AlgoDTO adto, ModelAndView mav,HttpSession session) {
 		System.out.println(detailService.infoListProcess(dto));
-		mav.addObject("detailInfoList", detailService.infoListProcess(dto));
-		mav.addObject("reviewlist", reviewService.reviewListProcess(rdto));
-		mav.setViewName("/detail/detail");
+		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
+		adto.setMemb_id(authInfo.getMemb_id());
 		
+		mav.addObject("detailInfoList", detailService.infoListProcess(dto));
+		mav.addObject("reviewlist", reviewService.reviewListProcess(rdto));		
+		mav.addObject("algolist", algoService.algoListProcess(adto));
+		mav.setViewName("/detail/detail");
 		
 		return mav;
 	}
+	
+	
 
 	@RequestMapping(value = "/detail.do", method = RequestMethod.POST)
 	public String writeProExcute(ReviewDTO dto, DetailDTO ddto, HttpServletRequest req, HttpSession session, RedirectAttributes ratt) {

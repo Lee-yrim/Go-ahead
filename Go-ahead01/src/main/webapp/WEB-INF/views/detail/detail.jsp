@@ -4,19 +4,22 @@
 
 <script>
 	$(function() {
-		$(".heart").on("click", function() {
-			$(this).toggleClass("is-active");			
-			let params = $(this).parents('.desc-like').next().children().first().serialize();	
+		$(".heart").on(
+				"click",
+				function() {
+					$(this).toggleClass("is-active");
+					let params = $(this).parents('.desc-like').next()
+							.children().first().serialize();
 
-			$.ajax({
-				type : 'GET',
-				url : 'memb/heart.do',
-				data : params,
-				success : function() {
-					alert("ok");
-				}
-			});
-		});
+					$.ajax({
+						type : 'GET',
+						url : 'memb/heart.do',
+						data : params,
+						success : function() {
+							alert("ok");
+						}
+					});
+				});
 	});
 </script>
 <body>
@@ -36,8 +39,8 @@
 			</c:otherwise>
 		</c:choose>
 		<c:forEach var="dto" items="${detailInfoList}">
-			<c:url var = "path" value = "detail.do">
-				<c:param name="info_seq" value = "${dto.info_seq }" />			
+			<c:url var="path" value="detail.do">
+				<c:param name="info_seq" value="${dto.info_seq }" />
 			</c:url>
 			<main class="desc-Area">
 
@@ -88,20 +91,20 @@
 
 								<tr>
 									<td scope="col" class="desc-like td-l col-2">
-									
-									<div class="heartArea">
-												<div class="stage">
-													<div class="heart"></div>
-												</div>
-											</div></td>											
+
+										<div class="heartArea">
+											<div class="stage">
+												<div class="heart"></div>
+											</div>
+										</div>
+									</td>
 									<td class="td-r">
-									<form> 									
-									<input
-										type="hidden" name="info_seq" value="${dto.info_seq}" />
-									<input type="text" name="favor_why" id="favor_why"
-										placeholder="찜하는 이유를 적어보세요!" />
-							     	</form>
-							  	</td>
+										<form>
+											<input type="hidden" name="info_seq" value="${dto.info_seq}" />
+											<input type="text" name="favor_why" id="favor_why"
+												placeholder="찜하는 이유를 적어보세요!" />
+										</form>
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -199,30 +202,17 @@
 				<div class="swiper-Area pd-top-60">
 					<div class="swiper-container">
 						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-								<img src="resources/images/camp1.jpg">
-								<div class="swiper-text">노을 캠핑장</div>
-							</div>
-							<div class="swiper-slide">
-								<img src="resources/images/camp1.jpg">
-								<div class="swiper-text">노을 캠핑장</div>
-							</div>
-							<div class="swiper-slide">
-								<img src="resources/images/camp1.jpg">
-								<div class="swiper-text">노을 캠핑장</div>
-							</div>
-							<div class="swiper-slide">
-								<img src="resources/images/camp1.jpg">
-								<div class="swiper-text">노을 캠핑장</div>
-							</div>
-							<div class="swiper-slide">
-								<img src="resources/images/camp1.jpg">
-								<div class="swiper-text">노을 캠핑장</div>
-							</div>
-							<div class="swiper-slide">
-								<img src="resources/images/camp1.jpg">
-								<div class="swiper-text">노을 캠핑장</div>
-							</div>
+							<c:forEach var="adto" items="${algolist}">
+								<c:url var="algopath" value="detail.do">
+									<c:param name="info_seq" value="${adto.info_seq}" />
+								</c:url>
+								<div class="swiper-slide">
+									<img src="${adto.img}" style="width: 100%; height: 168px" />
+									<div class="swiper-text"><a href="${algopath}" class="btn"
+										>${adto.loc_name}</a></div>
+									
+								</div>
+							</c:forEach>
 						</div>
 
 						<!-- 네비게이션 -->
@@ -241,4 +231,4 @@
 		<!-- //slideArea -->
 	</div>
 
-</body> 
+</body>

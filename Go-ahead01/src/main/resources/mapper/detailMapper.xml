@@ -2,50 +2,35 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-   
+
 <mapper namespace="detail">
-	<select id="detailInfo" parameterType="detail.dto.DetailDTO" resultType="detail.dto.DetailDTO">
+	<select id="detailInfo" parameterType="detail.dto.DetailDTO"
+		resultType="detail.dto.DetailDTO">
 		select * FROM info
 		WHERE info_seq = #{info_seq}
 	</select>
-	
-	<insert id="save" parameterType="detail.dto.ReviewDTO" >
-		INSERT INTO
+
+	<insert id="save" parameterType="detail.dto.ReviewDTO">
+		INSERT
+		INTO
 		review
 		VALUES(rev_seq.nextval, sysdate,
-		#{review_content, jdbcType=VARCHAR}, #{memb_id, jdbcType=VARCHAR}
+		#{review_content,
+		jdbcType=VARCHAR}, #{memb_id, jdbcType=VARCHAR}
 		)
 	</insert>
-	
-	
-<!--   	<select id="detailReview" resultType="detail.dto.ReviewDTO">
-		<![CDATA[
-			SELECT a.* FROM (
-				SELECT *
-				FROM review
-				ORDER BY write_date DESC
-			)a
-			WHERE ROWNUM <= 5
-		]]>
-	</select> -->
-	
- 	<resultMap type="detail.dto.ReviewDTO" id="reviewList" autoMapping="true">
-		<association property="membDTO" javaType="memb.dto.MembDTO">
-			<result column="memb_id" property="memb_id"/>
-		</association>
-	</resultMap>   
-	
- 	 <select id="detailReview" parameterType="detail.dto.ReviewDTO" resultMap="reviewList">
 
-<!-- 		  <![CDATA[
-		    SELECT b.* 
-		     FROM(SELECT rownum as rm, a.*
-		          FROM (SELECT r.*, m.nickname 
-		          FROM review r, memb m
-		          WHERE r.memb_id=m.memb_id(+)               
-		          ORDER BY r.write_date DESC)a)b
-		     WHERE b.rm>=1 AND b.rm<=5
-		  ]]> -->
+	<resultMap type="detail.dto.ReviewDTO" id="reviewList"
+		autoMapping="true">
+		<association property="membDTO"
+			javaType="memb.dto.MembDTO">
+			<result column="memb_id" property="memb_id" />
+		</association>
+	</resultMap>
+
+	<select id="detailReview" parameterType="detail.dto.ReviewDTO"
+		resultMap="reviewList">
+
 		
 		 <![CDATA[
 			select s.*
@@ -57,14 +42,45 @@
 			where s.rm<=5
 		]]>
 
-<!-- 		<![CDATA[
-			select s.*
-			from( 
-			    select rownum as rm, r.*,m.nickname
-				from review r left outer join memb m
-				on r.memb_id=m.memb_id)s
-			where s.rm>=1 and s.rm<=5
-		]]> -->
-		
+
 	</select>
+
+	<resultMap type="detail.dto.AlgoDTO" id="algoList" autoMapping="true">
+		<association property="membDTO" javaType="memb.dto.MembDTO" autoMapping="true">
+			<result column="memb_id" property="memb_id" />
+		</association>
+		<association property="favorDTO" javaType="favor.dto.FavorDTO" autoMapping="true">
+			<result column="memb_id" property="memb_id" />
+		</association>
+		<association property="infoDTO" javaType="info.dto.InfoDTO" autoMapping="true">
+		    <result column="info_seq" property="info_seq"/>
+		</association>
+	</resultMap>
+
+	<select id="detailAlgo" parameterType="detail.dto.AlgoDTO" resultMap="algoList">
+
+		<!-- algo테이블에서 뽑아오기 -->
+		<![CDATA[
+		select *
+		from (SELECT a.age, a.info_seq, COUNT(a.info_seq) AS zzim, i.loc_name, i.img
+		        FROM algo a, info i
+		        where age=(select distinct age
+		                    from algo
+		                    where memb_id=#{memb_id}) and a.info_seq=i.info_seq
+		        GROUP BY a.info_seq, age, i.loc_name, i.img
+		        ORDER BY zzim DESC)
+		where rownum<=3
+		]]>
+	</select>
+
+
+
+
+
+	<!-- <select id="detailAlgo" parameterType="detail.dto.AlgoDTO" resultType="detail.dto.AlgoDTO"> 
+		<![CDATA[ select * from (SELECT age, info_seq, COUNT(info_seq) AS zzim FROM 
+		algo where age=(select distinct age from algo where memb_id=#{memb_id}) GROUP 
+		BY info_seq, age ORDER BY zzim DESC) where rownum<=3 ]]> </select> -->
+
+
 </mapper>

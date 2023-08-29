@@ -19,7 +19,7 @@
 			alert(returnUrl + "요청한 페이지는 회원에게만 제공됩니다.");
 
 		if ($.cookie("REMEMBER")) {
-			$("#memb_Id").val($.cookie("REMEMBER"));
+			$("#memb_id").val($.cookie("REMEMBER"));
 			$("#rememberId").prop('checked', true);
 
 			$('#rememberId').click(function() {
@@ -83,7 +83,7 @@
 					</div>
 					<form name="login" method="post" action="login.do">
 						<div class="mb-3">
-							<label for="memb_Id" class="form-label">아이디</label>
+							<label for="memb_id" class="form-label">아이디</label>
 							<input type="text" class="form-control" id="memb_id" name="memb_id" placeholder="아이디를 입력하세요"
 								required="required">
 						</div>

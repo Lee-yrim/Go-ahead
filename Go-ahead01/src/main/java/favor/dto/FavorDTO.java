@@ -17,7 +17,6 @@ public class FavorDTO {
 
 	}
 	
-
 	public InfoDTO getInfoDTO() {
 		return infoDTO;
 	}

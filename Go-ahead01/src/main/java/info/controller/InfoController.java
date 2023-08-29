@@ -16,13 +16,13 @@ import memb.dto.AuthInfo;
 
 @Controller
 public class InfoController {
-	
+
 	private InfoDAO dao;
 
 	public InfoController() {
 
 	}
-	
+
 	public void setDao(InfoDAO dao) {
 		this.dao = dao;
 	}
@@ -47,7 +47,7 @@ public class InfoController {
 		mav.setViewName("info/glamping");
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/glampingmap.do")
 	public ModelAndView glampingmap(ModelAndView mav) {
 		mav.addObject("glampingmap", dao.list());
@@ -61,12 +61,12 @@ public class InfoController {
 		mav.setViewName("info/car");
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/carmap.do")
 	public ModelAndView carmap(ModelAndView mav) {
 		mav.addObject("carmap", dao.list());
 		mav.setViewName("info/carmap");
 		return mav;
 	}
-	
+
 }

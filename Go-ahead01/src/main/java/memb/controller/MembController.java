@@ -110,7 +110,7 @@ public class MembController {
 		session.invalidate();
 		System.out.println("logout OK");
 		
-		return "info/camping";
+		return "redirect:/camping.do";
 	}
 
 	// 마이페이지(회원수정) in
