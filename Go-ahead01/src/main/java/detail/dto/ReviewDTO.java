@@ -2,6 +2,7 @@ package detail.dto;
 
 import java.sql.Date;
 
+import info.dto.InfoDTO;
 import memb.dto.MembDTO;
 
 public class ReviewDTO {
@@ -13,10 +14,29 @@ public class ReviewDTO {
 	private String memb_id;
 	private String nickname;
 	
+	private int info_seq;
+
+	
 	private MembDTO membDTO;
+	private InfoDTO infoDTO;
 	
 	
-	
+	public int getInfo_seq() {
+		return info_seq;
+	}
+
+	public void setInfo_seq(int info_seq) {
+		this.info_seq = info_seq;
+	}
+
+	public InfoDTO getInfoDTO() {
+		return infoDTO;
+	}
+
+	public void setInfoDTO(InfoDTO infoDTO) {
+		this.infoDTO = infoDTO;
+	}
+
 	public int getRev_seq() {
 		return rev_seq;
 	}
