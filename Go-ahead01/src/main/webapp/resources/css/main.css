@@ -275,6 +275,10 @@ color:olive;
 	width: 80%;
 }
 
+#mypage-wrap .content .pw-area > .text-r {
+	width: 70% !important;
+}
+
 #mypage-wrap .content .user-info {
 	width: 96%;
     margin: 0 auto;
@@ -497,10 +501,6 @@ color:olive;
 .rew-list .table-Area table td.rew-list-desc {
   text-align: left;
   padding-left: 10px;
-}
-
-.rew-list .table-Area table td.rew-list-desc p {
-  margin-bottom: 20px;
 }
 
 .rew-list .table-Area table td:last-child {

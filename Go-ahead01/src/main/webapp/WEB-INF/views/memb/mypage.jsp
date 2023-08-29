@@ -49,13 +49,15 @@
 								<div class="mb-3 pw-area">
 									<span class="text-l">비밀번호변경</span>
 									<!-- <span style="border: 1px solid; width: 50%; display: inline-block"></span> -->
-									<input type="text" name="memb_pw" style="width: 50%" 
-										placeholder="변경할 비밀번호 입력">
+									<input type="text" name="memb_pw" class="text-r"  style="width: 70%" placeholder="변경할 비밀번호 입력">
 									<!-- <input type="password" style="width: 50%" type="text" class="form-label" placeholder="변경할 비밀번호와 같게 입력" /> -->
 									<!-- <button type="button" onclick="test()">변경 확인</button> -->
-									<button type="submit" class="btn btn-Olive">수정제출</button>
+									
 								</div>
-		
+								
+								<div class="mb-3" style="padding-left:0;">
+									<button type="submit" class="btn btn-Olive"  style="width: 100%;">수정제출</button>
+								</div>
 								<!-- <div class="mb-3" id="test_obj" style="display: none">
 									<span class="form-label">변경확인 칸</span> <span
 										style="border: 1px solid; width: 50%; display: inline-block">비번*****</span>
