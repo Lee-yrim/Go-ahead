@@ -40,7 +40,7 @@
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="resources/css/popup.css" media="(min-width:600px)" />
 <script type="text/javascript" defer src="resources/js/popup.js"></script>
-
+<title><tiles:insertAttribute name="title"/></title>
 </head>
 <body>
 	<tiles:insertAttribute name="header" />
