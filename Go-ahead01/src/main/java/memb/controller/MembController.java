@@ -133,7 +133,7 @@ public class MembController {
 		AuthInfo authInfo = membService.updateMembProcess(membDTO);
 		session.setAttribute("authInfo", authInfo);
 		
-		return "info/camping";
+		return "redirect:/mypage.do";
 	} 
 
 }

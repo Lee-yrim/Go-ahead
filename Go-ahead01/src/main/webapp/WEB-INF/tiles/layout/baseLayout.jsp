@@ -34,6 +34,11 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+
+<link rel="stylesheet" href="resources/css/popup.css" media="(min-width:600px)" />
+<script type="text/javascript" defer src="resources/js/popup.js"></script>
+
 </head>
 <body>
 	<tiles:insertAttribute name="header" />

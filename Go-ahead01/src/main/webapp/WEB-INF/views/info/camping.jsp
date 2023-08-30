@@ -63,13 +63,33 @@
 					</div>
 				</div>
 			</div>
-			<!-- <div class="tab-pane fade" id="kakakomap" role="tabpanel" aria-labelledby="kakakomap-tab" tabindex="0">
-			<div class="map_wrap">
-				<div id="map"></div>
-			</div>
-		</div> -->
+		
 		</div>
 	</div>
+	
+		   <!-- popup -->
+        <div id="popup_layer">
+            <div class="popup_box">
+                <!--팝업 컨텐츠 영역-->
+                <div class="popup_cont">
+                    <h2>진행시켜 팀</h2>
+                    <p>
+                        EZEN ACADEMY 1차 프로젝트 <br/>
+                        Let's Camp
+                    </p>
+                </div>
+                <!--팝업 버튼 영역-->
+                <div class="popup_btn">
+                    <!--하루동안 보지않기-->
+                    <a id="chk_today" href="javascript:closeToday();" class="close_day">Do not open for a day</a>
+                    <!--7일간 보지않기-->
+                    <!-- <a id="chk_today" href="javascript:closeToday();" class="close_day">Do not open for 7 days</a>-->
+                    <a href="javascript:closePop();">Close</a>
+                </div>
+            </div>
+        </div>
+    <!-- // popup -->
+	
 	<script>
 		$(function() {
 			$(".heart").on("click", function() {
@@ -87,5 +107,7 @@
 			});
 		});
 	</script>
+
+
 
 </body>
