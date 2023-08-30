@@ -20,7 +20,7 @@ $(function(){
 
 //오늘하루만보기 닫기버튼 스크립트
 function closeToday() { 
-	setCookie( "popToday", "close" , 1  ); 
+	setCookie( "popToday", "close" , 999); 
 	$("#popup_layer").css("display", "none");
 	document.getElementById("popup_layer").style.display = "none";
 }
