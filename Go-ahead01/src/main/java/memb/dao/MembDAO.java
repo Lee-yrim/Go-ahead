@@ -10,6 +10,4 @@ public interface MembDAO {
 	
 	public void updateMemb(MembDTO dto);
 	
-	public void updateByPass(MembDTO dto);
-	// :)
 }

@@ -3,7 +3,7 @@ package info.dto;
 import favor.dto.FavorDTO;
 
 public class InfoDTO {
-	
+
 	private int info_seq;
 	private String loc_name;
 	private String address;
@@ -17,11 +17,11 @@ public class InfoDTO {
 	private String nature;
 
 	private FavorDTO favorDTO;
-	
+
 	public FavorDTO getFavorDTO() {
 		return favorDTO;
 	}
-	
+
 	public void setFavorDTO(FavorDTO favorDTO) {
 		this.favorDTO = favorDTO;
 	}
@@ -32,19 +32,19 @@ public class InfoDTO {
 	public int getInfo_seq() {
 		return info_seq;
 	}
-	
+
 	public void setInfo_seq(int info_seq) {
 		this.info_seq = info_seq;
 	}
-	
+
 	public String getLoc_name() {
 		return loc_name;
 	}
-		
+
 	public void setLoc_name(String loc_name) {
-		 this.loc_name = loc_name;
+		this.loc_name = loc_name;
 	}
-	 
+
 	public String getAddress() {
 		return address;
 	}
@@ -64,9 +64,11 @@ public class InfoDTO {
 	public String getInfo_content() {
 		return info_content;
 	}
+
 	public void setInfo_content(String info_content) {
 		this.info_content = info_content;
 	}
+
 	public String getImg() {
 		return img;
 	}
@@ -107,7 +109,7 @@ public class InfoDTO {
 		this.facility = facility;
 	}
 
-	public String getNature() { 
+	public String getNature() {
 		return nature;
 	}
 

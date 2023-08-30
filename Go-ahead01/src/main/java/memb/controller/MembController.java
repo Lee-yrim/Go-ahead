@@ -34,7 +34,7 @@ public class MembController {
 	@RequestMapping(value = "/signup.do", method = RequestMethod.GET)
 	public ModelAndView addMember(ModelAndView mav) {
 		mav.setViewName("memb/signup");
-		
+
 		return mav;
 	}
 
@@ -42,15 +42,15 @@ public class MembController {
 	@RequestMapping(value = "/signup.do", method = RequestMethod.POST)
 	public String addMember(MembDTO membDTO, HttpSession session) {
 		System.out.println(membDTO.getMemb_id());
-		
+
 		// java.lang.String => java.sql.Date
-		//스트링으로 받아온거를 데이트값으로 변환하는부분
+		// 스트링으로 받아온 날짜를 Date값으로 변환하는부분
 		membDTO.setBirth(Date.valueOf(membDTO.getSbirth()));
-		
+
 		AuthInfo authInfo = membService.addMembProcess(membDTO);
 		session.setAttribute("authInfo", authInfo);
 
-		// java.sql.Date => java.lang.String 
+		// java.sql.Date => java.lang.String
 		// 생일 출력할때 쓰는부분
 		// membDTO.setSbirth(String.valueOf(membDTO.getBirth()));
 		// membDTO.setSbirth(membDTO.getBirth().toString());
@@ -72,7 +72,7 @@ public class MembController {
 		try {
 			System.out.println(membDTO.getMemb_id());
 			System.out.println(membDTO.getMemb_pw());
-			
+
 			AuthInfo authInfo = membService.loginProcess(membDTO);
 			session.setAttribute("authInfo", authInfo);
 
@@ -109,7 +109,7 @@ public class MembController {
 	public String logoutMember(HttpSession session) {
 		session.invalidate();
 		System.out.println("logout OK");
-		
+
 		return "redirect:/camping.do";
 	}
 
@@ -117,13 +117,13 @@ public class MembController {
 	@RequestMapping(value = "/mypage.do", method = RequestMethod.GET)
 	public ModelAndView updateMemb(ModelAndView mav, HttpSession session) {
 		// System.out.println(memb_id);
-		
+
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
 		System.out.println("membe_id : " + authInfo.getMemb_id());
-		
-		mav.addObject("membDTO", membService.updateMembProcess(authInfo.getMemb_id()));			
+
+		mav.addObject("membDTO", membService.updateMembProcess(authInfo.getMemb_id()));
 		mav.setViewName("memb/mypage");
-		
+
 		return mav;
 	}
 
@@ -132,8 +132,8 @@ public class MembController {
 	public String updateMemb(MembDTO membDTO, HttpSession session) {
 		AuthInfo authInfo = membService.updateMembProcess(membDTO);
 		session.setAttribute("authInfo", authInfo);
-		
+
 		return "redirect:/mypage.do";
-	} 
+	}
 
 }

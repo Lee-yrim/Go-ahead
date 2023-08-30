@@ -14,5 +14,4 @@ public interface FavorService {
 	
 	//찜 삭제
 	public void deleteFavor(int favor_seq);
-//	public void deleteFavor(FavorDTO dto);
 }

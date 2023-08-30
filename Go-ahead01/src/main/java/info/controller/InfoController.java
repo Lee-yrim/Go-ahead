@@ -1,16 +1,10 @@
 package info.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import favor.dao.FavorDAO;
-import favor.dto.FavorDTO;
-import favor.service.FavorService;
 import info.dao.InfoDAO;
-import memb.dto.AuthInfo;
 
 // http://localhost:8090/myapp/camping.do
 

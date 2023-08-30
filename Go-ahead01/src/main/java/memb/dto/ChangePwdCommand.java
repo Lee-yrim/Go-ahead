@@ -1,10 +1,10 @@
 package memb.dto;
 
 public class ChangePwdCommand {
-	
+
 	private String currentPassword;
 	private String newPassword;
-	
+
 	public ChangePwdCommand() {
 
 	}
@@ -24,5 +24,5 @@ public class ChangePwdCommand {
 	public void setNewPassword(String newPassword) {
 		this.newPassword = newPassword;
 	}
-	
+
 }

@@ -17,6 +17,5 @@
 		<property name="favorService" ref="favorService" />
 	</bean>
 
-
 </beans>
 	

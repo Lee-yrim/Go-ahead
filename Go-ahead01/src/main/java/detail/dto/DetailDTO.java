@@ -1,6 +1,7 @@
 package detail.dto;
 
 public class DetailDTO {
+	
 	private int info_seq;
 	private String loc_name;
 	private String address;
@@ -14,7 +15,7 @@ public class DetailDTO {
 	private String variety;
 	
 	public DetailDTO() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public int getInfo_seq() {
@@ -104,6 +105,5 @@ public class DetailDTO {
 	public void setVariety(String variety) {
 		this.variety = variety;
 	}
-	
 	
 }

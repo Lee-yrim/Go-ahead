@@ -8,26 +8,25 @@ import memb.dto.MembDTO;
 
 public class AlgoDTO {
 
-	private String memb_id;	
+	private String memb_id;
 	private Date birth;
-	private int age; 	
-	private int info_seq; 
-	private String loc_name;	
-	private String img;	
+	private int age;
+	private int info_seq;
+	private String loc_name;
+	private String img;
 
-	
 	private MembDTO membDTO;
 	private FavorDTO favorDTO;
 	private InfoDTO infoDTO;
-	
+
 	public AlgoDTO() {
 
 	}
-	
+
 	public FavorDTO getFavorDTO() {
 		return favorDTO;
 	}
-	
+
 	public InfoDTO getInfoDTO() {
 		return infoDTO;
 	}
@@ -36,11 +35,10 @@ public class AlgoDTO {
 		this.infoDTO = infoDTO;
 	}
 
-	
 	public void setFavorDTO(FavorDTO favorDTO) {
 		this.favorDTO = favorDTO;
 	}
-	
+
 	public String getLoc_name() {
 		return loc_name;
 	}
@@ -60,11 +58,10 @@ public class AlgoDTO {
 	public MembDTO getMembDTO() {
 		return membDTO;
 	}
-	
+
 	public void setMembDTO(MembDTO membDTO) {
 		this.membDTO = membDTO;
 	}
-	
 
 	public String getMemb_id() {
 		return memb_id;
@@ -106,20 +103,4 @@ public class AlgoDTO {
 		this.info_seq = info_seq;
 	}
 
-//	public AlgoDTO(String memb_id, Date birth, int age, int info_seq, MembDTO membDTO, FavorDTO favorDTO,
-//			InfoDTO infoDTO) {
-//		super();
-//		this.memb_id = memb_id;
-//		this.birth = birth;
-//		this.age = age;
-//		this.info_seq = info_seq;
-//		this.membDTO = membDTO;
-//		this.favorDTO = favorDTO;
-//		this.infoDTO = infoDTO;
-//	}
-
-	
-	
-	
-	
 }

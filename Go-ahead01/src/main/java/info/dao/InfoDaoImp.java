@@ -21,7 +21,6 @@ public class InfoDaoImp implements InfoDAO{
 	@Override
 	public List<InfoDTO> list() {
 		return sqlSession.selectList("info.all");
-		//Å×½ºÆ®
 	}
 	
 }//end class

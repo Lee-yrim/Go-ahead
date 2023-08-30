@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <script>
@@ -66,8 +65,7 @@
 								</tr>
 								<tr>
 									<td scope="col" class="td-l">홈페이지</td>
-									<td class="td-r"><a href="${dto.route }" target="_blank">${dto.route }</a>
-									</td>
+									<td class="td-r"><a href="${dto.route }" target="_blank">${dto.route }</a></td>
 								</tr>
 
 								<tr>
@@ -82,8 +80,7 @@
 									<td class="td-r">
 										<form>
 											<input type="hidden" name="info_seq" value="${dto.info_seq}" />
-											<input type="text" name="favor_why" id="favor_why"
-												placeholder="찜하는 이유를 적어보세요!" />
+											<input type="text" name="favor_why" id="favor_why" placeholder="찜하는 이유를 적어보세요!" />
 										</form>
 									</td>
 								</tr>
@@ -91,28 +88,24 @@
 						</table>
 					</div>
 				</div>
-
 			</main>
-			<!-- // thumb Area -->
+
 			<!-- detail -->
 			<div class="tab-Area pd-top-60">
 				<ul class="nav nav-fill" id="myTab" role="tablist">
 					<li class="nav-item" role="presentation">
-						<button class="nav-link active" id="detail-tab"
-							data-bs-toggle="tab" data-bs-target="#detail-tab-pane"
-							type="button" role="tab" aria-controls="detail-tab-pane"
-							aria-selected="true">상세정보</button>
+						<button class="nav-link active" id="detail-tab" data-bs-toggle="tab" data-bs-target="#detail-tab-pane"
+							type="button" role="tab" aria-controls="detail-tab-pane" aria-selected="true">상세정보</button>
 					</li>
 					<li class="nav-item" role="presentation">
-						<button class="nav-link" id="rew-tab" data-bs-toggle="tab"
-							data-bs-target="#rew-tab-pane" type="button" role="tab"
+						<button class="nav-link" id="rew-tab" data-bs-toggle="tab" data-bs-target="#rew-tab-pane" type="button" role="tab"
 							aria-controls="rew-tab-pane" aria-selected="false">후기</button>
 					</li>
 				</ul>
 			</div>
 			<div class="tab-content" id="myTabContent">
-				<div class="tab-pane fade show active" id="detail-tab-pane"
-					role="tabpanel" aria-labelledby="detail-tab" tabindex="0">
+				<div class="tab-pane fade show active" id="detail-tab-pane" role="tabpanel" aria-labelledby="detail-tab"
+					tabindex="0">
 					<!-- 상세페이지 -->
 					<main class="content">
 						<div class="container">
@@ -122,18 +115,16 @@
 							</div>
 						</div>
 					</main>
-					<!-- //상세페이지 -->
 				</div>
-				<div class="tab-pane fade" id="rew-tab-pane" role="tabpanel"
-					aria-labelledby="rew-tab" tabindex="0">
+				<!-- //상세페이지 -->
+				<div class="tab-pane fade" id="rew-tab-pane" role="tabpanel" aria-labelledby="rew-tab" tabindex="0">
 					<!-- 후기 -->
 					<main>
 						<div class="content">
 							<h6 class="subTitle">후 &nbsp;&nbsp; 기</h6>
 							<div class="pd-top-60">
 								<form class="rew-write-Area" action="${path }" method=post>
-									<textarea name="review_content" id="review_content"
-										placeholder="생생한 후기 작성을 해주세요!"></textarea>
+									<textarea name="review_content" id="review_content" placeholder="생생한 후기 작성을 해주세요!"></textarea>
 									<button type="submit" class="rew-btn">리뷰작성</button>
 								</form>
 							</div>
@@ -174,6 +165,7 @@
 					<!-- // 후기 -->
 				</div>
 			</div>
+			
 		</c:forEach>
 		<!-- slideArea -->
 		<main class="content">
@@ -190,14 +182,14 @@
 									<c:param name="info_seq" value="${adto.info_seq}" />
 								</c:url>
 								<div class="swiper-slide">
-									<img src="${adto.img}"  />
-									<div class="swiper-text"><a href="${algopath}" class="btn"
-										>${adto.loc_name}</a></div>
+									<img src="${adto.img}" />
+									<div class="swiper-text">
+										<a href="${algopath}" class="btn">${adto.loc_name}</a>
+									</div>
 								</div>
 							</c:forEach>
 						</div>
 
-					
 					</div>
 				</div>
 			</div>

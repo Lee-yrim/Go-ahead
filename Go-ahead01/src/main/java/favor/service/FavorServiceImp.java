@@ -34,10 +34,5 @@ public class FavorServiceImp implements FavorService {
 	public void deleteFavor(int favor_seq) {
 		favorDao.deleteFavor(favor_seq);		
 	}
-	
-	/*@Override
-	public void deleteFavor(FavorDTO dto) {
-		favorDao.deleteFavor(dto);
-	}*/
 
 }

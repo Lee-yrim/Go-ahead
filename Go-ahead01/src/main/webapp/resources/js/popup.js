@@ -9,7 +9,7 @@ function setCookie( name, value, expiredays ) {  // 쿠키저장
 
 $(function(){
 	$(".popup_box").draggable({containment:'parent', scroll:false}); // 레이어 팝업 창 드래그 가능
-	//{containment:'parent', scroll:false} 화면 영역 밖으로 드래그 안됌.
+	//{containment:'parent', scroll:false} 화면 영역 밖으로 드래그 안됨.
                 
 	if(document.cookie.indexOf("popToday=close") < 0 ){      // 쿠키 저장여부 체크
 		document.getElementById("popup_layer").style.display = "block";
@@ -24,6 +24,7 @@ function closeToday() {
 	$("#popup_layer").css("display", "none");
 	document.getElementById("popup_layer").style.display = "none";
 }
+
 //그냥 닫기버튼 스크립트
 function closePop() { 
 	document.getElementById("popup_layer").style.display = "none";

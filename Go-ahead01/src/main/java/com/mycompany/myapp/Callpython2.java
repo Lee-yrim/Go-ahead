@@ -2,6 +2,7 @@ package com.mycompany.myapp;
 
 import java.io.IOException;
 
+// 파이썬 파일 실행 클래스
 public class Callpython2 {
 
 	public void main() throws IOException, InterruptedException {

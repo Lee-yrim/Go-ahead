@@ -12,5 +12,4 @@ public interface FavorDAO {
 	
 	public void deleteFavor(int favor_seq);
 	
-//	public void deleteFavor(FavorDTO dto);
 }
