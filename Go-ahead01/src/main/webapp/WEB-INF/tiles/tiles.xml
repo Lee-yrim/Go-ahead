@@ -5,52 +5,64 @@
        
 <tiles-definitions>
 	<definition name="baseLayout" template="/WEB-INF/tiles/layout/baseLayout.jsp">
+		<put-attribute name="title" value=""/>
 		<put-attribute name="header" value="/WEB-INF/tiles/common/header.jsp"/>
 		<put-attribute name="content" value=""/>
 		<put-attribute name="footer" value="/WEB-INF/tiles/common/footer.jsp"/>		
 	</definition>
 	
 	<definition name="info/camping" extends="baseLayout">
+		<put-attribute name="title" value="캠핑"/>
 		<put-attribute name="content" value="/WEB-INF/views/info/camping.jsp"/>
 	</definition>
 	
 	<definition name="info/glamping" extends="baseLayout">
+		<put-attribute name="title" value="글램핑"/>
 		<put-attribute name="content" value="/WEB-INF/views/info/glamping.jsp"/>
 	</definition>
 	
 	<definition name="info/car" extends="baseLayout">
+		<put-attribute name="title" value="차박"/>
 		<put-attribute name="content" value="/WEB-INF/views/info/car.jsp"/>
 	</definition>
 	
 	<definition name="info/kakaomap" extends="baseLayout">
+		<put-attribute name="title" value="지도"/>
 		<put-attribute name="content" value="/WEB-INF/views/info/kakaomap.jsp"/>
 	</definition>
 	
 	<definition name="info/glampingmap" extends="baseLayout">
+		<put-attribute name="title" value="지도"/>
 		<put-attribute name="content" value="/WEB-INF/views/info/glampingmap.jsp"/>
 	</definition>
 	
 	<definition name="info/carmap" extends="baseLayout">
+		<put-attribute name="title" value="지도"/>
 		<put-attribute name="content" value="/WEB-INF/views/info/carmap.jsp"/>
 	</definition>
 	
 	<definition name="memb/favor" extends="baseLayout">
+		<put-attribute name="title" value="찜 목록"/>
 		<put-attribute name="content" value="/WEB-INF/views/memb/favor.jsp"/>
 	</definition>
 	
 	<definition name="memb/login" extends="baseLayout">
+		<put-attribute name="title" value="로그인"/>
 		<put-attribute name="content" value="/WEB-INF/views/memb/login.jsp"/>
 	</definition>
 	
 	<definition name="memb/mypage" extends="baseLayout">
+		<put-attribute name="title" value="마이페이지"/>
 		<put-attribute name="content" value="/WEB-INF/views/memb/mypage.jsp"/>
 	</definition>
 	
 	<definition name="memb/signup" extends="baseLayout">
+		<put-attribute name="title" value="회원가입"/>
 		<put-attribute name="content" value="/WEB-INF/views/memb/signup.jsp"/>
 	</definition>
 
 	<definition name="/detail/detail" extends="baseLayout">
+		<put-attribute name="title" value="상세"/>
 		<put-attribute name="content" value="/WEB-INF/views/detail/detail.jsp"/>
 	</definition>
 	
