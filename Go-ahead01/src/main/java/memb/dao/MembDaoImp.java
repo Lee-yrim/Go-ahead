@@ -3,16 +3,17 @@ package memb.dao;
 import org.mybatis.spring.SqlSessionTemplate;
 import memb.dto.MembDTO;
 
-public class MembDaoImp implements MembDAO{
-	
+public class MembDaoImp implements MembDAO {
+
 	private SqlSessionTemplate sqlSession;
-	
-	public MembDaoImp() {}
-	
+
+	public MembDaoImp() {
+	}
+
 	public void setSqlSession(SqlSessionTemplate sqlSession) {
 		this.sqlSession = sqlSession;
 	}
-	
+
 	@Override
 	public int insertMemb(MembDTO dto) {
 		return sqlSession.insert("memb.insertMemb", dto);
@@ -26,11 +27,6 @@ public class MembDaoImp implements MembDAO{
 	@Override
 	public void updateMemb(MembDTO dto) {
 		sqlSession.update("memb.updateMemb", dto);
-	}
-
-	@Override
-	public void updateByPass(MembDTO dto) {
-
 	}
 
 }

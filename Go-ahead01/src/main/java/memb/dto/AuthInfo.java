@@ -31,8 +31,7 @@ public class AuthInfo {
 		this.nickname = nickname;
 		this.birth = birth;
 	}
-	
-	
+
 	public AuthInfo(String memb_pw, String nickname) {
 		super();
 		this.memb_pw = memb_pw;
@@ -62,11 +61,11 @@ public class AuthInfo {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	
+
 	public Date getBirth() {
 		return birth;
 	}
-	
+
 	public void setBirth(Date birth) {
 		this.birth = birth;
 	}

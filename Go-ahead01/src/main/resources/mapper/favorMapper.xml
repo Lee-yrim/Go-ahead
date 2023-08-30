@@ -4,7 +4,7 @@
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="favor">
-	<!-- 뫄뫄 하기위한 resultMap===========뫄뫄가 뭔지 정확히 아시는 분 쓰기 -->
+
 	<resultMap type="favor.dto.FavorDTO" id="favorlist" autoMapping="true">
 		<association property="infoDTO" javaType="info.dto.InfoDTO" autoMapping="true">
 			<result column="info_seq" property="info_seq" />
@@ -34,7 +34,6 @@
 	</insert>
 
 	<!-- 찜 취소 -->
-	<!-- parameterType="favor.dto.FavorDTO" -->
 	<delete id="deleteFavor" parameterType="int">
 		DELETE FROM favor
 		WHERE

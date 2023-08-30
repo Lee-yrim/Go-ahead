@@ -159,10 +159,11 @@ color:olive;
 	font-weight: 600;
 }
 
-.content .card-text {
+/* 카드형식 칸 조정 추후 사용할수도 있음 */
+/* .content .card-text {
 	height: 100px;
 	padding: 20px 0;
-}
+} */
 
 .content .card-body a.btn {
 	background-color: olive; 
@@ -253,15 +254,6 @@ color:olive;
 .mem-form input::placeholder {
 	color: #999;
 }
-
-/* .idarea {
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-end;
-}
-.idarea>div {
-	width: 80%;
-} */
 
 #mypage-wrap .content .text-l {
 	font-weight: 600;

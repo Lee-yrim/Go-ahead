@@ -14,5 +14,4 @@ public interface MembService {
 	
 	public AuthInfo updateMembProcess(MembDTO dto);
 	
-	public void updatePassProcess(String memb_id, ChangePwdCommand changePwd);
 }

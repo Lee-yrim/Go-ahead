@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<!-- 아이디 기억하기 script  -->
 <script>
 	$(document).ready(function() {
-		let returnUrl = "${param.returnUrl}";
-		if (returnUrl != "")
-			alert(returnUrl + "요청한 페이지는 회원에게만 제공됩니다.");
-
 		if ($.cookie("REMEMBER")) {
 			$("#memb_id").val($.cookie("REMEMBER"));
 			$("#rememberId").prop('checked', true);
@@ -34,8 +33,7 @@
 					<form name="login" method="post" action="login.do">
 						<div class="mb-3">
 							<label for="memb_id" class="form-label">아이디</label>
-							<input type="text" class="form-control" id="memb_id" name="memb_id" placeholder="아이디를 입력하세요"
-								required="required">
+							<input type="text" class="form-control" id="memb_id" name="memb_id" placeholder="아이디를 입력하세요" required="required">
 						</div>
 						<div class="mb-3 pd-top-20">
 							<label for="pw" class="form-label">비밀번호</label>
@@ -47,8 +45,7 @@
 						</div>
 						<div class="btn-box">
 							<button type="submit" class="btn btn-Olive">로그인</button>
-							<a href="${pageContext.request.contextPath}/signup.do" type="button"
-								class="btn btn-Olive">회원가입</a>
+							<a href="${pageContext.request.contextPath}/signup.do" type="button" class="btn btn-Olive">회원가입</a>
 						</div>
 					</form>
 				</div>

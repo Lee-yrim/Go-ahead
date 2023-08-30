@@ -6,12 +6,13 @@ import detail.dao.DetailDAO;
 import detail.dto.DetailDTO;
 
 public class DetailServiceImp implements DetailService {
-	private DetailDAO detailDao;
 	
+	private DetailDAO detailDao;
+
 	public void setDetailDao(DetailDAO detailDao) {
 		this.detailDao = detailDao;
 	}
-	
+
 	@Override
 	public List<DetailDTO> infoListProcess(DetailDTO dto) {
 		return detailDao.infolist(dto);

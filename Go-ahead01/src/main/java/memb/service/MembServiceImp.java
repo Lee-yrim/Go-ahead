@@ -3,7 +3,6 @@ package memb.service;
 import common.exception.WrongPasswordException;
 import memb.dao.MembDAO;
 import memb.dto.AuthInfo;
-import memb.dto.ChangePwdCommand;
 import memb.dto.MembDTO;
 
 public class MembServiceImp implements MembService {
@@ -31,12 +30,10 @@ public class MembServiceImp implements MembService {
 
 		MembDTO memb = membDao.selectById(dto.getMemb_id());
 
-		// ....? 회원정보가 존재하지 않습니다?
 		if (memb == null) {
 			throw new WrongPasswordException("회원정보가 존재하지 않습니다.");
 		}
 
-		//이거 구현된건지 확인
 		if (!memb.matchPass(dto.getMemb_pw())) {
 			throw new WrongPasswordException("비밀번호가 일치하지 않습니다.");
 		}
@@ -49,25 +46,18 @@ public class MembServiceImp implements MembService {
 	public MembDTO updateMembProcess(String memb_id) {
 		return membDao.selectById(memb_id);
 	}
-	
-	// 회원수정 서비스
+
+	// 회원수정 처리
 	@Override
 	public AuthInfo updateMembProcess(MembDTO dto) {
-		// 데이터 잘 넘어오는지 확인 / 추후 삭제 또는 주석
-		System.out.printf("process: %s %s %s",dto.getMemb_id(), dto.getMemb_pw(), dto.getNickname());
 		
+		// System.out.printf("process: %s %s %s", dto.getMemb_id(), dto.getMemb_pw(), dto.getNickname());
+
 		membDao.updateMemb(dto);
 		MembDTO memb = membDao.selectById(dto.getMemb_id());
-		
 		System.out.println(memb.getMemb_id());
-		 
-		return new AuthInfo(memb.getMemb_id(), memb.getMemb_pw(), memb.getNickname() );
-	}
 
-	// ???????????????? 필요??????????///
-	@Override
-	public void updatePassProcess(String memb_id, ChangePwdCommand changePwd) {
-
+		return new AuthInfo(memb.getMemb_id(), memb.getMemb_pw(), memb.getNickname());
 	}
 
 }

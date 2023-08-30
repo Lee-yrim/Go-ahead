@@ -6,21 +6,17 @@ import info.dto.InfoDTO;
 import memb.dto.MembDTO;
 
 public class ReviewDTO {
-	private int rev_seq; 
-	
+
+	private int rev_seq;
 	private Date write_date;
-	
 	private String review_content;
 	private String memb_id;
 	private String nickname;
-	
 	private int info_seq;
 
-	
 	private MembDTO membDTO;
 	private InfoDTO infoDTO;
-	
-	
+
 	public int getInfo_seq() {
 		return info_seq;
 	}
@@ -52,7 +48,7 @@ public class ReviewDTO {
 	public void setWrite_date(Date write_date) {
 		this.write_date = write_date;
 	}
-	
+
 	public String getReview_content() {
 		return review_content;
 	}
@@ -76,6 +72,7 @@ public class ReviewDTO {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+
 	public MembDTO getMembDTO() {
 		return membDTO;
 	}
@@ -84,6 +81,4 @@ public class ReviewDTO {
 		this.membDTO = membDTO;
 	}
 
-	
-	
 }

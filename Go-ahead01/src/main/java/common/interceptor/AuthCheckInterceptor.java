@@ -26,7 +26,7 @@ public class AuthCheckInterceptor extends HandlerInterceptorAdapter {
 			}
 		}	
 		
-		response.sendRedirect(request.getContextPath() + "/memb/login.do");
+		response.sendRedirect(request.getContextPath() + "/login.do");
 		//로그인 하고 오라고 로그인페이지로 보냄
 		
 		System.out.println(request.getContextPath());		

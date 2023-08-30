@@ -9,7 +9,7 @@ import detail.dto.AlgoDTO;
 public class AlgoDaoImp implements AlgoDAO {
 
 	private SqlSessionTemplate sqlSession;
-	
+
 	public AlgoDaoImp() {
 
 	}

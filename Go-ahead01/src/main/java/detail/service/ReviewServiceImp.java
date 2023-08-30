@@ -20,18 +20,8 @@ public class ReviewServiceImp implements ReviewService {
 		return reviewDao.reviewlist(dto);
 	}
 	
-//	@Override
-//	public ReviewDTO detailreview(int rev_seq) {
-//		return reviewDao.detailreview(rev_seq);
-//	}
-
-	
 	@Override
 	public void insertProcess(ReviewDTO dto) {
-		
 		reviewDao.save(dto);	
 	}
-
-
-
 }
