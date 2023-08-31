@@ -31,26 +31,26 @@ public class MembController {
 	}
 
 	// 회원가입 페이지 in
-	@RequestMapping(value = "/memb/signup.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/signup.do", method = RequestMethod.GET)
 	public ModelAndView addMember(ModelAndView mav) {
 		mav.setViewName("memb/signup");
-		
+
 		return mav;
 	}
 
 	// 회원가입 처리
-	@RequestMapping(value = "/memb/signup.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/signup.do", method = RequestMethod.POST)
 	public String addMember(MembDTO membDTO, HttpSession session) {
 		System.out.println(membDTO.getMemb_id());
-		
+
 		// java.lang.String => java.sql.Date
-		//스트링으로 받아온거를 데이트값으로 변환하는부분
+		// 스트링으로 받아온 날짜를 Date값으로 변환하는부분
 		membDTO.setBirth(Date.valueOf(membDTO.getSbirth()));
-		
+
 		AuthInfo authInfo = membService.addMembProcess(membDTO);
 		session.setAttribute("authInfo", authInfo);
 
-		// java.sql.Date => java.lang.String 
+		// java.sql.Date => java.lang.String
 		// 생일 출력할때 쓰는부분
 		// membDTO.setSbirth(String.valueOf(membDTO.getBirth()));
 		// membDTO.setSbirth(membDTO.getBirth().toString());
@@ -59,20 +59,20 @@ public class MembController {
 	}
 
 	// 로그인 페이지 in
-	@RequestMapping(value = "/memb/login.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String loginMember() {
 
 		return "memb/login";
 	}
 
 	// 로그인 처리
-	@RequestMapping(value = "/memb/login.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public String loginMember(MembDTO membDTO, HttpSession session, HttpServletResponse resp) {
 
 		try {
 			System.out.println(membDTO.getMemb_id());
 			System.out.println(membDTO.getMemb_pw());
-			
+
 			AuthInfo authInfo = membService.loginProcess(membDTO);
 			session.setAttribute("authInfo", authInfo);
 
@@ -105,35 +105,35 @@ public class MembController {
 	}
 
 	// 로그아웃 처리
-	@RequestMapping(value = "/memb/logout.do")
+	@RequestMapping(value = "/logout.do")
 	public String logoutMember(HttpSession session) {
 		session.invalidate();
 		System.out.println("logout OK");
-		
-		return "info/camping";
+
+		return "redirect:/camping.do";
 	}
 
 	// 마이페이지(회원수정) in
-	@RequestMapping(value = "/memb/mypage.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage.do", method = RequestMethod.GET)
 	public ModelAndView updateMemb(ModelAndView mav, HttpSession session) {
 		// System.out.println(memb_id);
-		
+
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
 		System.out.println("membe_id : " + authInfo.getMemb_id());
-		
-		mav.addObject("membDTO", membService.updateMembProcess(authInfo.getMemb_id()));			
+
+		mav.addObject("membDTO", membService.updateMembProcess(authInfo.getMemb_id()));
 		mav.setViewName("memb/mypage");
-		
+
 		return mav;
 	}
 
 	// 회원수정 처리
-	@RequestMapping(value = "/memb/mypage.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/mypage.do", method = RequestMethod.POST)
 	public String updateMemb(MembDTO membDTO, HttpSession session) {
 		AuthInfo authInfo = membService.updateMembProcess(membDTO);
 		session.setAttribute("authInfo", authInfo);
-		
-		return "info/camping";
-	} 
+
+		return "redirect:/mypage.do";
+	}
 
 }

@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+/* reset */
+*,h1,h2,h3,h4,h5,h6,a,p,span {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 1rem;
+    list-style: none;
+    text-decoration: none;
+    color: #5e5e5e;
+}
+
+a {
+    color: #5e5e5e;
+    text-decoration: none;
+}
+
+*::selection {
+    background-color: #66a335;
+    color: #fff;
+}
+
+table {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* font-face */
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    font-family: 'SUIT-Regular';
+    
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.btn-Olive {
+    background-color: olive;
+    color: #fff;
+    border: 1px solid olive;
+}
+
+.btn-Olive:hover {
+	border: 1px solid olive;
+}
+
+.content {
+	padding: 100px 0;
+}
+
+/* padding */
+.pd-top-100 {
+	padding-top: 100px;
+}
+.pd-top-60  {
+    padding-top: 60px;
+}
+.pd-top-20 {
+	padding-top: 20px;
+}
+.pd-bottom-40 {
+	padding-bottom: 40px;
+}

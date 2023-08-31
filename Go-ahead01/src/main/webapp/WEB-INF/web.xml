@@ -41,6 +41,7 @@
 				/WEB-INF/spring/appServlet/memb-context.xml
 				/WEB-INF/spring/appServlet/info-context.xml
 				/WEB-INF/spring/appServlet/favor-context.xml
+				/WEB-INF/spring/appServlet/detail-context.xml
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>

@@ -22,11 +22,9 @@
 		update memb set
 		nickname=#{nickname}
 		<if test="memb_pw!=''">
-		  ,memb_pw=#{memb_pw}
+			,memb_pw=#{memb_pw}
 		</if>
-				
 		where memb_id=#{memb_id}
 	</update>
-	
-	
+
 </mapper>

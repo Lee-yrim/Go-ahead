@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 
-	<!-- 아래 영향을 받는 것에서 제외 / 영향을 받지 않게 함 ( 비회원이 이용할 수 있는 기능 - login, sign up) -->
-
-
+	<!-- AuthCheckInterceptor 선언 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/*/*.do" />
 			<mvc:exclude-mapping path="/memb/login.do" />
 			<mvc:exclude-mapping path="/memb/signup.do" />
-
 			<bean class="common.interceptor.AuthCheckInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
@@ -36,10 +34,9 @@
 				<value>classpath:mapper/membMapper.xml</value>
 				<value>classpath:mapper/infoMapper.xml</value>
 				<value>classpath:mapper/favorMapper.xml</value>
+				<value>classpath:mapper/detailMapper.xml</value>
 			</list>
 		</property>
-
-		<!-- <property name="configLocation" value="classpath:mapper/configuration.xml" /> -->
 	</bean>
 
 	<!-- [3] SqlSessionTemplate 빈 선언 -->
@@ -47,8 +44,6 @@
 		<constructor-arg ref="sqlSessionFactoryBean" />
 	</bean>
 
-
-	<!-- 선언적 트랜잭션 : <tx:advice>태그를 이용한 트랜젹션 -->
 
 	<!-- [4] TransactionManager 빈 선언 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -89,8 +84,9 @@
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
-		<property name="order" value="2" />
+		<property name="order" value="3" />
 	</bean>
+	
 	<!-- Controller -->
 	<bean class="com.mycompany.myapp.HomeController" />
 

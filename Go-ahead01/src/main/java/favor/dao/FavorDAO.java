@@ -11,4 +11,5 @@ public interface FavorDAO {
 	public void insertFavor(FavorDTO dto); 
 	
 	public void deleteFavor(int favor_seq);
+	
 }

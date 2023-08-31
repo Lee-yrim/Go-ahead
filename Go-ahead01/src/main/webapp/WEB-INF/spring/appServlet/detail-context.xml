@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="detailDao" class="detail.dao.DetailDaoImp">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
+
+	<bean id="algoDao" class="detail.dao.AlgoDaoImp">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
+	<bean id="detailService" class="detail.service.DetailServiceImp">
+		<property name="detailDao" ref="detailDao"></property>
+	</bean>
+
+	<bean id="reviewDao" class="detail.dao.ReviewDaoImp">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
+
+	<bean id="reviewService" class="detail.service.ReviewServiceImp">
+		<property name="reviewDao" ref="reviewDao"></property>
+	</bean>
+
+	<bean id="algoService" class="detail.service.AlgoServiceImp">
+		<property name="algoDao" ref="algoDao" />
+	</bean>
+
+	<bean class="detail.controller.DetailController">
+		<property name="detailService" ref="detailService" />
+		<property name="reviewService" ref="reviewService" />
+		<property name="algoService" ref="algoService" />
+	</bean>
+</beans>

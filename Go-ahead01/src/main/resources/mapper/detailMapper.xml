@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="detail">
+	<select id="detailInfo" parameterType="detail.dto.DetailDTO" resultType="detail.dto.DetailDTO">
+		select * FROM info
+		WHERE info_seq = #{info_seq}
+	</select>
+
+	<insert id="save" parameterType="detail.dto.ReviewDTO">
+		INSERT INTO review
+		VALUES(rev_seq.nextval, sysdate, #{review_content, jdbcType=VARCHAR}, #{memb_id, jdbcType=VARCHAR}, #{info_seq, jdbcType=NUMERIC}
+		)
+	</insert>
+
+	<resultMap type="detail.dto.ReviewDTO" id="reviewList" autoMapping="true">
+		<association property="membDTO" javaType="memb.dto.MembDTO">
+			<result column="memb_id" property="memb_id" />
+		</association>
+		<association property="infoDTO" javaType="info.dto.InfoDTO">
+			<result column="info_seq" property="info_seq" />
+		</association>
+	</resultMap>
+
+	<select id="detailReview" parameterType="detail.dto.ReviewDTO" resultMap="reviewList">
+
+		 <![CDATA[
+			select s.*
+			from( select a.*, rownum as rm
+	            	from(
+					    select r.*, m.nickname
+					    from review r, memb m, info i
+					    where m.memb_id=r.memb_id and i.info_seq=r.info_seq
+					    order by r.write_date desc)a
+		                where a.info_seq=#{info_seq}) s
+			where s.rm<=5 
+		]]>
+
+
+	</select>
+
+	<resultMap type="detail.dto.AlgoDTO" id="algoList" autoMapping="true">
+		<association property="membDTO" javaType="memb.dto.MembDTO" autoMapping="true">
+			<result column="memb_id" property="memb_id" />
+		</association>
+		<association property="favorDTO" javaType="favor.dto.FavorDTO" autoMapping="true">
+			<result column="memb_id" property="memb_id" />
+		</association>
+		<association property="infoDTO" javaType="info.dto.InfoDTO" autoMapping="true">
+			<result column="info_seq" property="info_seq" />
+		</association>
+	</resultMap>
+
+	<select id="detailAlgo" parameterType="detail.dto.AlgoDTO" resultMap="algoList">
+
+		<!-- algo 테이블에서 선호도 위하여 select -->
+		<![CDATA[
+		select *
+		from (SELECT a.age, a.info_seq, COUNT(a.info_seq) AS zzim, i.loc_name, i.img
+		        FROM algo a, info i
+		        where age=(select distinct age
+		                    from algo
+		                    where memb_id=#{memb_id}) and a.info_seq=i.info_seq
+		        GROUP BY a.info_seq, age, i.loc_name, i.img
+		        ORDER BY zzim DESC)
+		where rownum<=3
+		]]>
+
+	</select>
+
+</mapper>

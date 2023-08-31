@@ -5,32 +5,17 @@
 
 <mapper namespace="favor">
 
-<!-- ?????????????????필요?????????????????/ -->
-	<select id="count" resultType="int">
-		SELECT count(*) FROM favor
-	</select>
-	
-	<!-- 뫄뫄 하기위한 resultMap===========뫄뫄가 뭔지 정확히 아시는 분 쓰기 -->
 	<resultMap type="favor.dto.FavorDTO" id="favorlist" autoMapping="true">
 		<association property="infoDTO" javaType="info.dto.InfoDTO" autoMapping="true">
 			<result column="info_seq" property="info_seq" />
 		</association>
 	</resultMap>
 
-	<!-- 찜한 장소들 전체를 선택해 오기 위한 쿼리??????????????????????????아래꺼랑 차이뭐???????????/ -->
-	<select id="all" resultType="info.dto.InfoDTO">
-		select i.*
-		from favor f, info i
-		where
-		f.info_seq= i.info_seq(+)
-	</select>
-
-	<!-- 찜 위꺼랑 차이뭐???????????????//-->
+	<!-- 찜 되어있는 장소들을 출력 -->
 	<select id="favor" parameterType="favor.dto.FavorDTO" resultMap="favorlist">
-		select f.favor_seq, i.*
+		select f.favor_seq, i.*, f.favor_why
 		from favor f, info i
-		where f.info_seq=
-		i.info_seq
+		where f.info_seq = i.info_seq
 		and memb_id = #{memb_id, jdbcType = VARCHAR}
 		order by f.favor_seq desc
 	</select>
@@ -38,19 +23,17 @@
 
 	<!-- 찜 추가 -->
 	<insert id="insertFavor" parameterType="favor.dto.FavorDTO">
-		INSERT INTO
-		favor(favor_seq, info_seq, memb_id)
+		INSERT INTO favor(favor_seq, info_seq, memb_id, favor_why)
 		select
-		favor_seq_test.nextval,
-		#{info_seq}, #{memb_id} from dual
-		WHERE (SELECT
-		count(*) from favor
-		where
-		info_seq = #{info_seq}) = 0
+		favor_seq.nextval, #{info_seq}, #{memb_id}, #{favor_why, jdbcType=VARCHAR} from dual
+		WHERE (SELECT count(*) 
+				from favor
+				where
+				memb_id=#{memb_id} and
+				info_seq = #{info_seq}) = 0
 	</insert>
 
 	<!-- 찜 취소 -->
-	<!-- parameterType="favor.dto.FavorDTO" -->
 	<delete id="deleteFavor" parameterType="int">
 		DELETE FROM favor
 		WHERE
